@@ -77,9 +77,7 @@ Body...
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 ```
 
-## Future Improvements (Ideas)
-- [ ] Extract health data to JSON for easier updates
-- [x] API key persistence (localStorage) — done
-- [ ] Print-friendly CSS
-- [ ] Accessibility pass (ARIA, contrast)
-- [ ] Backend proxy for API (avoid CORS on file://)
+## Future Improvements
+See [future.md](future.md) for detailed notes on:
+- API key security options (localStorage risks, backend proxy design)
+- Other ideas: JSON data extraction, print CSS, accessibility, HTTPS on LAN
