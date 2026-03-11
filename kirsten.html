@@ -1,1 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirsten's Health Plan</title>
+<style>
 
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.6}.hero{background:linear-gradient(135deg,#1e3a5f,#2d6a9f,#4a9fd4);color:white;padding:40px;text-align:center}.hero h1{font-size:2.5rem;font-weight:700;margin-bottom:8px}.hero .subtitle{font-size:1.1rem;opacity:.85}.badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;margin:8px 4px;font-size:.85rem}.container{max-width:1200px;margin:0 auto;padding:24px}.section{background:white;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.08)}.section-title{font-size:1.3rem;font-weight:700;color:#1e3a5f;border-bottom:2px solid #e2e8f0;padding-bottom:12px;margin-bottom:20px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:768px){.grid-2{grid-template-columns:1fr}}.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:768px){.grid-3{grid-template-columns:1fr}}.lab-table{width:100%;border-collapse:collapse;font-size:.9rem}.lab-table th{background:#f1f5f9;color:#475569;font-weight:600;padding:10px 14px;text-align:left;border-bottom:2px solid #e2e8f0}.lab-table td{padding:10px 14px;border-bottom:1px solid #f1f5f9}.lab-table tr:hover{background:#f8fafc}.n{background:#dcfce7;color:#166534;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:600}.h{background:#fee2e2;color:#991b1b;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:600}.l{background:#fef3c7;color:#92400e;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:600}.ab{background:#fde8d8;color:#9a3412;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:600}.mc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.mc .mn{font-weight:700;color:#1e3a5f}.mc .md{color:#475569;font-size:.9rem;margin:4px 0}.mc .mm{color:#64748b;font-size:.82rem}.mc .mt{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:8px;padding:2px 8px;font-size:.75rem;margin-top:6px}.ab-warn{border-left:4px solid #f59e0b;background:#fffbeb;color:#78350f;border-radius:8px;padding:14px 18px;margin-bottom:12px}.ab-info{border-left:4px solid #3b82f6;background:#eff6ff;color:#1e3a5f;border-radius:8px;padding:14px 18px;margin-bottom:12px}.ab-ok{border-left:4px solid #10b981;background:#f0fdf4;color:#065f46;border-radius:8px;padding:14px 18px;margin-bottom:12px}.ab-err{border-left:4px solid #ef4444;background:#fef2f2;color:#7f1d1d;border-radius:8px;padding:14px 18px;margin-bottom:12px}.tl{position:relative;padding-left:24px}.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e2e8f0}.tli{position:relative;margin-bottom:16px}.tli::before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:#2d6a9f}.tli .d{font-size:.8rem;color:#94a3b8;font-weight:600}.tli .t{font-weight:600;color:#1e3a5f}.tli .dt{font-size:.88rem;color:#475569}.ai-box{background:linear-gradient(135deg,#1e3a5f,#2d6a9f);border-radius:16px;padding:28px;color:white}.ai-textarea{width:100%;border:none;outline:none;padding:14px;font-size:.95rem;resize:vertical;min-height:100px;border-radius:10px;color:#1a202c;font-family:inherit}.ai-btn{background:linear-gradient(135deg,#f59e0b,#f97316);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px;width:100%}.ai-response{background:white;border-radius:12px;padding:20px;margin-top:16px;color:#1a202c;display:none;font-size:.95rem;line-height:1.7}.ai-response.show{display:block}.qbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:20px;padding:6px 14px;font-size:.82rem;cursor:pointer;margin:4px}.sc{background:#f1f5f9;border-radius:12px;padding:16px;text-align:center}.sc .sv{font-size:1.8rem;font-weight:800;color:#1e3a5f}.sc .sl{font-size:.82rem;color:#64748b;margin-top:4px}.kf{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:20px;margin-bottom:16px}.kf h3{color:#9a3412;font-weight:700;margin-bottom:12px}.kf ul{list-style:none;padding:0}.kf li{padding:6px 0;color:#7c2d12;border-bottom:1px solid #fed7aa;font-size:.92rem}.kf li:last-child{border:none}
+/* QR Code Section */
+.qr-section {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+@media(max-width:768px){
+  .hero{display:flex;flex-direction:column}
+  .qr-section{position:static!important;margin-top:16px;justify-content:center;order:10}
+}
+.qr-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#qrcode canvas, #qrcode img {
+  border-radius: 6px;
+  background: white;
+  padding: 4px;
+}
+.qr-label {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+.qr-label strong {
+  font-size: 14px;
+  color: white;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+</style>
+</head>
+<body>
+<div class="hero" style="position:relative;">
+  <div class="qr-section" style="position:absolute;top:16px;right:20px;">
+    <div class="qr-inner">
+      <div id="qrcode"></div>
+      <div class="qr-label">
+        <strong>Kirsten's Health Plan</strong><br>
+        <small>Scan to open on another device</small>
+      </div>
+    </div>
+  </div>
+  <h1>Kirsten's Health Plan</h1>
+  <div class="subtitle">Comprehensive Medical Record &amp; AI Health Management Portal</div>
+  <div style="margin-top:16px"><span class="badge">Patient: Kirsten</span><span class="badge">Age: ~60</span><span class="badge">Rural Patient - Providence Health</span><span class="badge">Updated: March 2026</span></div>
+</div>
+<div class="container">
+<div class="ab-info">This health plan was compiled from MyChart (test results, medications, health issues, preventive care) to help Kirsten and her provider make informed decisions. Intended to support — not replace — professional medical advice. Designed to facilitate second opinions for a rural patient.</div><div class="kf"><h3>Active Items Requiring Attention</h3><ul>
+<li><strong>Testosterone VERY HIGH (Mar 2026):</strong> Total 393 ng/dL (ref 4-50 female), Free 5.8 pg/mL (ref 0-4.2). Nearly 8x upper limit. Urgent HRT dose review needed.</li>
+<li><strong>Estradiol High vs Postmeno Ref (Mar 2026):</strong> 121 pg/mL — review HRT dosing with prescriber Dr. Brennan / Koru Pharmacy.</li>
+<li><strong>Glucose Borderline High (Mar 2026):</strong> 102 mg/dL (ref 74-100). Trending up. Request A1C screening.</li>
+<li><strong>TSH High-Normal Pattern (Mar 2026):</strong> 4.394 — consistent 4.2-4.7 across 4 years. Consider Free T4/T3 to rule out subclinical hypothyroidism.</li>
+<li><strong>Leukopenia (FORMAL DIAGNOSIS, Mar 2021):</strong> WBC 3.6 (Apr 2024), ANC 1.7. Recurring Abnormal CBC since 2018. Has this been formally investigated?</li>
+<li><strong>Vitamin D Deficiency (FORMAL DIAGNOSIS, Sep 2020):</strong> Level dropped to 27 despite 5,000 IU D3 daily. Needs dose increase or absorption workup.</li>
+<li><strong>Breast Biopsy (Oct 2025):</strong> US-guided biopsy performed. Pathology in external scans — MOST CRITICAL: review results with Dr. Witham.</li>
+<li><strong>Chronic Knee Pain (FORMAL DIAGNOSIS, Jun 2025):</strong> Autoimmune causes ruled out. Imaging of knees not yet documented. Ask about X-ray or MRI.</li>
+<li><strong>4 Overdue Vaccinations:</strong> Tdap (last 2002!), Shingles, Pneumococcal, Influenza — discuss at Mar 26, 2026 appointment.</li>
+</ul></div><div class="section"><div class="section-title">Health Overview</div>
+<div class="grid-3">
+<div class="sc"><div class="sv">119</div><div class="sl">Total Test Results on File</div></div>
+<div class="sc"><div class="sv" style="color:#dc2626">9</div><div class="sl">Active Concerns Flagged</div></div>
+<div class="sc"><div class="sv">2003-2026</div><div class="sl">Medical History Span</div></div>
+<div class="sc"><div class="sv">7</div><div class="sl">Active Diagnoses</div></div>
+<div class="sc"><div class="sv">5</div><div class="sl">Active Rx Medications</div></div>
+<div class="sc"><div class="sv" style="color:#059669">Current</div><div class="sl">Mammogram, PAP, Colonoscopy</div></div>
+</div></div><div class="ai-box">
+<h2>AI Health Assistant — Ask Claude About Kirsten's Health</h2>
+<p style="opacity:.85;margin-bottom:20px">Enter your Anthropic API key, then ask questions about your diagnoses, lab results, medications, or get help preparing for provider appointments. Claude has all your health data pre-loaded.</p>
+<div class="api-key-box" style="margin-bottom:16px;background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,.1);box-shadow:0 2px 8px rgba(0,0,0,.06)">
+<label for="apiKey" style="font-size:.9rem;color:#1e3a5f;display:block;margin-bottom:8px;font-weight:600">Anthropic API Key — get one free at <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color:#2d6a9f;text-decoration:underline">console.anthropic.com</a> (stored only in your browser)</label>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" style="flex:1;min-width:200px;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;font-size:.95rem;color:#1a202c;background:#f8fafc;font-family:monospace" aria-label="API Key">
+<button type="button" id="apiKeyToggle" style="padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.2);color:white;font-size:.85rem;cursor:pointer;white-space:nowrap">Show</button>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+<button class="qbtn" onclick="sq('What do my most recent hormone levels mean for my HRT dosing?')">HRT Review</button>
+<button class="qbtn" onclick="sq('My TSH has been 4.2-4.7 for years. Could I have subclinical hypothyroidism?')">Thyroid</button>
+<button class="qbtn" onclick="sq('I have a formal diagnosis of leukopenia since 2021 with WBC low since 2018. What could cause this?')">Leukopenia</button>
+<button class="qbtn" onclick="sq('My glucose rose from 96 to 102. Should I be concerned about diabetes risk?')">Glucose Trend</button>
+<button class="qbtn" onclick="sq('My Vitamin D dropped to 27 despite 5,000 IU daily. What should I do?')">Vitamin D</button>
+<button class="qbtn" onclick="sq('I had a breast biopsy in Oct 2025. What follow-up questions should I ask my doctor?')">Breast Biopsy</button>
+<button class="qbtn" onclick="sq('I have chronic knee pain and TMJ arthritis. Could these be related? What could be causing both?')">Joint Pain</button>
+<button class="qbtn" onclick="sq('What vaccines am I overdue for and why are they important at age 60?')">Overdue Vaccines</button>
+<button class="qbtn" onclick="sq('I am a rural patient with limited specialist access. What telehealth and second opinion options should I know about?')">Rural Health</button>
+<button class="qbtn" onclick="sq('Can you give me a complete summary of my most important health priorities and what to discuss at my next appointment?')">Full Summary</button>
+<button class="qbtn" onclick="sq('What lifestyle changes, supplements, and diet modifications would help my specific health issues?')">Lifestyle &amp; Diet</button>
+<button class="qbtn" onclick="sq('What are the most important things to know about bioidentical compounded HRT and monitoring at my age?')">BHRT Education</button>
+</div>
+<div style="background:white;border-radius:12px;padding:4px">
+<textarea class="ai-textarea" id="aiQ" placeholder="Type your health question here... e.g. 'What does testosterone of 393 ng/dL mean for me?' or 'I have knee pain, low WBC, and high-normal TSH — could these be connected?' Press Ctrl+Enter to submit."></textarea>
+<button class="ai-btn" onclick="askC()">Ask Claude for Analysis</button>
+</div>
+<div id="loading" style="display:none;text-align:center;color:rgba(255,255,255,.9);padding:20px;font-size:1rem"><span style="display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.4);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:10px"></span>Analyzing your complete health record with Claude...</div>
+<div class="ai-response" id="aiR"></div>
+</div><div class="section"><div class="section-title">Official Diagnoses / Health Issues on File</div>
+<div class="ab-info" style="margin-bottom:16px">These are the formal diagnoses documented in Kirsten's medical record in MyChart. Very important context for any provider visit or second opinion.</div>
+
+<h3 style="color:#dc2626;margin-bottom:10px;font-size:.95rem">Active / Current Health Issues</h3>
+<div class="grid-2">
+<div class="mc" style="border-left:3px solid #dc2626"><div class="mn">Essential Hypertension</div><div class="md">Started: September 17, 2020</div><div class="mm">Explains Losartan + Metoprolol prescriptions. Blood pressure management ongoing.</div><span class="mt">Cardiovascular</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Leukopenia</div><div class="md">Started: March 11, 2021</div><div class="mm">Formally diagnosed low white blood cell count. Confirms recurring low WBC pattern in labs (2018-2024). Needs ongoing monitoring.</div><span class="mt">Hematology</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Vitamin D Deficiency</div><div class="md">Started: September 17, 2020</div><div class="mm">Ongoing despite D3 5,000 IU supplementation. Level dropped to 27 ng/mL in Apr 2024. Needs recheck.</div><span class="mt">Nutritional</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Chronic Pain of Both Knees</div><div class="md">Started: June 24, 2025</div><div class="mm">This is the "unexplained pain" from the Jun 2025 workup. Autoimmune causes ruled out (RF, ANA, CCP, ESR all normal). No specific etiology documented.</div><span class="mt">Musculoskeletal / Pain</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">TMJ Arthritis</div><div class="md">Started: May 3, 2017</div><div class="mm">Temporomandibular joint arthritis. Long-standing condition.</div><span class="mt">Dental / Jaw</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">TMJ Arthralgia</div><div class="md">Started: May 3, 2017</div><div class="mm">TMJ pain. Co-diagnosis with TMJ arthritis.</div><span class="mt">Dental / Jaw</span></div>
+<div class="mc" style="border-left:3px solid #64748b"><div class="mn">Ganglion Cyst of Finger</div><div class="md">Started: May 7, 2020</div><div class="mm">Benign cystic lesion. Usually managed conservatively.</div><span class="mt">Orthopedic / Benign</span></div>
+</div>
+
+<h3 style="color:#059669;margin:20px 0 10px;font-size:.95rem">Resolved / Removed Health Issues (Patient-Reported)</h3>
+<div class="grid-2">
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Menopausal Syndrome (Hot Flashes)</div><div class="md">Started: 5/3/2017 | RESOLVED</div><div class="mm">Patient note: "Currently on Hormone Therapy. Menopause symptoms are gone." - HRT working effectively for menopausal symptoms.</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">OSA (Obstructive Sleep Apnea)</div><div class="md">Started: 5/3/2017 | RESOLVED</div><div class="mm">Patient note: "I don't have sleep apnea anymore." - Resolved without documented treatment (weight loss? positional?)</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Insomnia</div><div class="md">Started: 7/17/2018 | RESOLVED</div><div class="mm">Patient note: "I don't have insomnia anymore."</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Atrophic Vaginitis</div><div class="md">Started: 7/17/2018 | RESOLVED</div><div class="mm">Patient note: "I don't have Atrophic vaginitis anymore." - Likely resolved with vaginal HRT (estriol cream).</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #f59e0b"><div class="mn">Palpitations</div><div class="md">Started: 9/28/2022 | MANAGED</div><div class="mm">Patient note: "Taking medicine" - Metoprolol (beta-blocker) prescribed Jan 2026 controls heart palpitations. This was likely triggered by the Sept 2022 cardiac event/evaluation.</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Chest Pain</div><div class="md">Started: 9/28/2022 | RESOLVED</div><div class="mm">Patient note: "No longer have chest pain." - Associated with the Sept 2022 ER visit and cardiac workup.</div></div>
+</div>
+
+<div class="ab-warn" style="margin-top:16px"><strong>Key Insight:</strong> The "unexplained pain" from the Jun 2025 labs is now identified as "Chronic Pain of Both Knees" — a formal diagnosis. Autoimmune causes ruled out. This suggests osteoarthritis, meniscal issues, or other mechanical/degenerative cause. With TMJ arthritis also on file, there may be a systemic joint involvement pattern worth discussing. Ask: "What is the suspected cause of my knee pain and has imaging of my knees been done?"</div>
+</div><div class="section"><div class="section-title">Preventive Care Status</div>
+<div class="ab-err" style="margin-bottom:16px"><strong>4 OVERDUE Vaccinations — discuss at your March 26, 2026 appointment:</strong> Tdap (last done 2002 — 24 years ago!), Shingles vaccine, Pneumococcal vaccine, Influenza vaccine.</div>
+
+<div class="grid-2">
+<div>
+<h3 style="color:#dc2626;margin-bottom:10px;font-size:.95rem">Overdue / Pending</h3>
+<table class="lab-table"><thead><tr><th>Vaccine/Service</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Tdap (Tetanus/Diphtheria/Pertussis)</td><td><span class="h">OVERDUE</span></td><td>Last done 3/26/2002 — 24 years ago! Recommended every 10 years.</td></tr>
+<tr><td>Shingles Vaccine (Shingrix)</td><td><span class="h">OVERDUE</span></td><td>Recommended for all adults 50+. 2-dose series. Important at age ~60.</td></tr>
+<tr><td>Pneumococcal Vaccine</td><td><span class="h">OVERDUE</span></td><td>PCV15 or PCV20 recommended for adults 65+ (or 60+ with certain conditions).</td></tr>
+<tr><td>Influenza Vaccine</td><td><span class="ab">OVERDUE</span></td><td>Annual flu shot. Get each fall.</td></tr>
+</tbody></table>
+</div>
+<div>
+<h3 style="color:#059669;margin-bottom:10px;font-size:.95rem">Up To Date - Cancer Screenings</h3>
+<table class="lab-table"><thead><tr><th>Screening</th><th>Last Done</th><th>Next Due</th><th>Status</th></tr></thead><tbody>
+<tr><td>Breast Cancer (Mammogram)</td><td>9/16/2025</td><td>9/16/2027</td><td><span class="n">Current</span></td></tr>
+<tr><td>Cervical Cancer (PAP/HPV)</td><td>3/18/2024</td><td>3/18/2029</td><td><span class="n">Current</span></td></tr>
+<tr><td>Colon Cancer (Colonoscopy)</td><td>3/30/2023</td><td>3/30/2033</td><td><span class="n">Current</span></td></tr>
+<tr><td>Hepatitis C Screening</td><td>9/29/2017</td><td>N/A</td><td><span class="n">Completed</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">All major cancer screenings are current. Next mammogram not due until 2027 — however, the Oct 2025 biopsy may require a different follow-up schedule. Confirm with Dr. Witham.</div>
+</div>
+</div></div><div class="section"><div class="section-title">Current Medications &amp; Supplements</div>
+<div class="ab-info"><strong>Pharmacies:</strong> Walgreens #10946, 2830 S Grand Blvd, Spokane WA 509-455-3736 | Koru Pharmacy (Compounding), 1802 N Monroe St, Spokane WA 509-343-6252</div>
+<h3 style="color:#1e3a5f;margin:12px 0 8px">Cardiovascular (for Essential Hypertension + Palpitations)</h3>
+<div class="mc"><div class="mn">Losartan 25 mg tablet (COZAAR)</div><div class="md">Take 1 tablet by mouth daily</div><div class="mm">Prescribed: Jan 30, 2026 | Dr. Rachael Witham, DO | Walgreens | 90 tabs / 90 days</div><span class="mt">ARB — Blood Pressure / Kidney Protection</span></div>
+<div class="mc"><div class="mn">Metoprolol Succinate 25 mg 24hr (TOPROL-XL)</div><div class="md">Take 1 tablet by mouth daily</div><div class="mm">Prescribed: Jan 2, 2026 | Dr. Rachael Witham, DO | Walgreens | 90 tabs / 90 days</div><span class="mt">Beta Blocker — Heart Rate / BP / Palpitations</span></div>
+<h3 style="color:#7c3aed;margin:16px 0 8px">Hormone Replacement Therapy — Compounded Bioidentical (Koru Pharmacy)</h3>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Progesterone Capsule</div><div class="md">Take 1 capsule by mouth daily at bedtime</div><div class="mm">Prescribed: Dec 30, 2025 | Joy Vaughan, PA-C | Qty: 90</div><span class="mt">Progesterone HRT</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Estrogen/Estriol Cream [TOPCLICK]</div><div class="md">Apply 2 clicks (0.5ml) topically or vaginally once daily</div><div class="mm">Prescribed: Aug 11, 2025 | Dr. Heather M. Brennan, MD | 30g</div><span class="mt">Estrogen HRT</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Vaginal Cream [PEARL]</div><div class="md">Apply 2 clicks (0.5ml) vaginally once daily</div><div class="mm">Prescribed: Aug 11, 2025 | Dr. Heather M. Brennan, MD | 30mL</div><span class="mt">Vaginal HRT (Estriol/Testosterone)</span></div>
+<h3 style="color:#dc2626;margin:16px 0 8px">Topical Treatment</h3>
+<div class="mc" style="border-left:3px solid #dc2626"><div class="mn">MetroNIDAZOLE 0.75% Cream (MetroCream)</div><div class="md">Apply topically to nose twice daily</div><div class="mm">Started: April 21, 2025 | MA Samantha V</div><span class="mt">Rosacea / Antibacterial</span></div>
+<h3 style="color:#059669;margin:16px 0 8px">Supplements (OTC)</h3>
+<div class="grid-2">
+<div class="mc"><div class="mn">Folic Acid 800 mcg</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Vitamin B-12 1,000 mcg (Cyanocobalamin)</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Zinc 15 (Zinc Sulfate)</div><div class="md">Take by mouth</div></div>
+<div class="mc"><div class="mn">Vitamin C 100 mg (Ascorbic Acid)</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Vitamin D-3 5,000 IU (Cholecalciferol 125 mcg)</div><div class="md">1 tablet daily | Dr. Rachael Witham, DO</div></div>
+</div></div><div class="section"><div class="section-title">Hormone Levels — Multi-Year Trend (HRT Monitoring)</div>
+<div class="ab-warn">Postmenopausal confirmed: FSH 73.2, Estradiol &lt;5.0 in Oct 2022 (pre-HRT). On bioidentical compounded HRT since ~Sept 2023. Dr. Witham: "hormone labs looking good" Apr 2024 — but Mar 2026 shows testosterone now VERY HIGH.</div>
+<table class="lab-table" style="margin-top:12px"><thead><tr><th>Test</th><th>Mar 2026</th><th>Apr 2024 (on HRT)</th><th>Oct 2022 (pre-HRT)</th><th>Reference</th><th>Notes</th></tr></thead><tbody>
+<tr><td><strong>Estradiol</strong></td><td>121 pg/mL <span class="h">HIGH*</span></td><td>34 pg/mL <span class="n">OK on HRT</span></td><td>&lt;5.0 pg/mL <span class="n">Postmeno</span></td><td>Postmeno: &lt;54.7</td><td>Above postmeno ref. HRT dose review.</td></tr>
+<tr><td><strong>Testosterone Total</strong></td><td>393 ng/dL <span class="h">VERY HIGH</span></td><td>N/A</td><td>N/A</td><td>Female: 4-50 ng/dL</td><td>Nearly 8x upper limit — urgent review.</td></tr>
+<tr><td><strong>Testosterone Free</strong></td><td>5.8 pg/mL <span class="h">HIGH</span></td><td>N/A</td><td>N/A</td><td>0.0-4.2 pg/mL</td><td>Elevated with total testosterone.</td></tr>
+<tr><td><strong>Progesterone</strong></td><td>1.4 ng/mL</td><td>N/A</td><td>N/A</td><td>Postmeno: 0.0-0.1</td><td>Expected on progesterone HRT.</td></tr>
+<tr><td><strong>DHEA-Sulfate</strong></td><td>115 ug/dL <span class="n">Normal</span></td><td>N/A</td><td>N/A</td><td>29.4-220.5 ug/dL</td><td>Normal</td></tr>
+<tr><td><strong>FSH</strong></td><td>N/A</td><td>N/A</td><td>73.2 mIU/mL</td><td>Postmeno: 25.8-134.8</td><td>Confirms menopause</td></tr>
+<tr><td><strong>LH</strong></td><td>N/A</td><td>N/A</td><td>32.5 mIU/mL</td><td>Postmeno: 7.7-58.5</td><td>Confirms menopause</td></tr>
+</tbody></table></div><div class="section"><div class="section-title">Thyroid Function — Multi-Year Trend</div>
+<div class="ab-warn">TSH consistently HIGH-NORMAL (4.2-4.7) across 2022-2026. ER in Sept 2022 flagged TSH 4.687 as ABNORMAL using stricter ref range 0.3-4.0. Pattern warrants Free T4/T3 testing to rule out subclinical hypothyroidism. Also on record: Cortisol normal (16.4, Oct 2022).</div>
+<table class="lab-table" style="margin-top:12px"><thead><tr><th>Test</th><th>Mar 2026</th><th>Oct 2022</th><th>Sep 2022 (ER)</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>TSH</td><td>4.394</td><td>4.258</td><td>4.687</td><td>0.45-5.1 / 0.3-4.0 (some labs)</td><td><span class="ab">Persistent High-Normal Pattern</span></td></tr>
+<tr><td>T3 Total (Oct 2022)</td><td colspan="3">1.0 ng/mL</td><td>0.70-1.80 ng/mL</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Cortisol AM (Oct 2022)</td><td colspan="3">16.4 ug/dL</td><td>6.7-22.6 ug/dL</td><td><span class="n">Normal — Adrenals OK</span></td></tr>
+</tbody></table></div><div class="section"><div class="section-title">Metabolic Panel (CMP/BMP) — Trend</div>
+<table class="lab-table"><thead><tr><th>Test</th><th>Mar 2026</th><th>Jun 2025</th><th>Oct 2022</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>Glucose</td><td>102</td><td>96</td><td>69</td><td>74-100 mg/dL</td><td><span class="h">Trending UP — A1C Recommended</span></td></tr>
+<tr><td>Sodium</td><td>138</td><td>138</td><td>139</td><td>136-144</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Potassium</td><td>3.9</td><td>4.1</td><td>4.0</td><td>3.5-5.0</td><td><span class="n">Normal (watch on Losartan)</span></td></tr>
+<tr><td>Creatinine</td><td>0.78</td><td>0.70</td><td>0.80</td><td>0.50-1.00</td><td><span class="n">Normal — Kidneys Good</span></td></tr>
+<tr><td>eGFR</td><td>&gt;60</td><td>&gt;60</td><td>&gt;60</td><td>&gt;=60</td><td><span class="n">Normal</span></td></tr>
+<tr><td>AST</td><td>23</td><td>N/A</td><td>37</td><td>10-45 U/L</td><td><span class="n">Normal — Liver OK</span></td></tr>
+<tr><td>ALT</td><td>26</td><td>N/A</td><td>47</td><td>14-54 U/L</td><td><span class="n">Normal — Liver OK</span></td></tr>
+<tr><td>Albumin</td><td>4.4</td><td>N/A</td><td>4.2</td><td>3.5-5.0</td><td><span class="n">Normal — Good Nutrition</span></td></tr>
+</tbody></table></div><div class="section"><div class="section-title">CBC (Blood Count) — Trend | Formal Diagnosis: Leukopenia</div>
+<table class="lab-table"><thead><tr><th>Test</th><th>Apr 2024</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>WBC</td><td>3.6 K/uL</td><td>4.0-10.8 K/uL</td><td><span class="l">LOW — Formal Dx: Leukopenia (since Mar 2021)</span></td></tr>
+<tr><td>ANC (Abs Neutrophils)</td><td>1.7 K/uL</td><td>2.00-7.30 K/uL</td><td><span class="l">LOW — Mild Neutropenia</span></td></tr>
+<tr><td>Hemoglobin</td><td>14.4 g/dL</td><td>12.0-16.0 g/dL</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Platelets</td><td>222 K/uL</td><td>150-400 K/uL</td><td><span class="n">Normal</span></td></tr>
+</tbody></table>
+<div class="ab-err" style="margin-top:12px"><strong>Leukopenia is a formal diagnosis (since 3/11/2021)</strong> — CBC Abnormal in 2018, 2019, 2021, 2022, 2024. Despite being officially diagnosed, cause may not have been fully investigated. Ask: "Has the cause of my leukopenia ever been determined? Should I see a hematologist?"</div></div><div class="section"><div class="section-title">Lipids, Vitamin D &amp; Autoimmune</div>
+<div class="grid-2">
+<div>
+<h3 style="color:#1e3a5f;margin-bottom:10px">Lipid Panel (Jun 2022 — Due for Recheck)</h3>
+<table class="lab-table"><thead><tr><th>Test</th><th>Value</th><th>Status</th></tr></thead><tbody>
+<tr><td>Total Cholesterol</td><td>214 mg/dL</td><td><span class="ab">Borderline High (&lt;200)</span></td></tr>
+<tr><td>HDL (Good)</td><td>87 mg/dL</td><td><span class="n">Excellent — Very Protective</span></td></tr>
+<tr><td>LDL (Bad)</td><td>112 mg/dL</td><td><span class="ab">Slightly High (&lt;100)</span></td></tr>
+<tr><td>Triglycerides</td><td>76 mg/dL</td><td><span class="n">Normal (&lt;150)</span></td></tr>
+<tr><td>Chol/HDL Ratio</td><td>2.5</td><td><span class="n">Low CV Risk (&lt;3.5)</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">Overall low cardiovascular risk due to exceptional HDL. Lipid panel last done Jun 2022 — 4 years overdue for recheck.</div>
+<h3 style="color:#1e3a5f;margin:16px 0 10px">Vitamin D (Formal Dx: Deficiency since Sep 2020)</h3>
+<table class="lab-table"><thead><tr><th>Date</th><th>Value</th><th>Status</th></tr></thead><tbody>
+<tr><td>Apr 2024</td><td>27 ng/mL</td><td><span class="l">LOW despite 5,000 IU/day</span></td></tr>
+<tr><td>Oct 2022</td><td>38 ng/mL</td><td><span class="n">Normal (30-119)</span></td></tr>
+</tbody></table>
+<div class="ab-warn" style="margin-top:8px;font-size:.85rem">Consider: increasing D3 dose, adding Vitamin K2 (MK-7), checking magnesium (needed for D3 activation), more sun exposure. Target: 40-60 ng/mL for postmenopausal women.</div>
+</div>
+<div>
+<h3 style="color:#1e3a5f;margin-bottom:10px">Autoimmune Panel (Jun 2025 — All Normal)</h3>
+<table class="lab-table"><thead><tr><th>Test</th><th>Result</th><th>Status</th></tr></thead><tbody>
+<tr><td>Rheumatoid Factor</td><td>&lt;10.0 IU/mL</td><td><span class="n">Normal (&lt;14)</span></td></tr>
+<tr><td>ESR (Sed Rate)</td><td>7 mm/hr</td><td><span class="n">Normal (0-10)</span></td></tr>
+<tr><td>ANA Qualitative</td><td>Negative</td><td><span class="n">Negative</span></td></tr>
+<tr><td>CCP Antibodies IgG/IgA</td><td>Negative</td><td><span class="n">Negative</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">Autoimmune causes for knee pain ruled out (Jun 2025). RA and related conditions are unlikely.</div>
+<h3 style="color:#1e3a5f;margin:16px 0 10px">Cardiac Workup History (Sep 2022)</h3>
+<div class="ab-warn" style="font-size:.85rem"><strong>Sep 2022 Hospital/ER visit:</strong> Troponin I x2 normal, Chest X-ray, CBC (Abnormal), CMP (Glucose 69 Low). TSH 4.687 flagged HIGH. Formal diagnoses: Palpitations (taking medicine) and Chest Pain (resolved). Cardiac monitoring: ECG, 4-week Event Monitor, Stress Echo w/Contrast Nov 2022. Now on Losartan + Metoprolol (started Jan 2026).</div>
+</div></div></div><div class="section"><div class="section-title">Imaging &amp; Procedures Timeline</div>
+<div class="ab-err"><strong>PRIORITY: Oct 2025 Breast Biopsy</strong> — US-guided biopsy performed Oct 6, 2025. Pathology reviewed by Kristen Hardy PA-C and Tonya Holstein ARNP. Results are in external scan documents. Must discuss with Dr. Witham at next appointment (March 26, 2026).</div>
+<div class="tl" style="margin-top:16px">
+<div class="tli"><div class="d">Oct 6, 2025</div><div class="t">US Guided Breast Biopsy (Right) + Pathology Results x2</div><div class="dt">Dr. Rachael Witham, DO | Kristen J. Hardy, PA-C | Tonya M Holstein, ARNP</div></div>
+<div class="tli"><div class="d">Sep-Oct 2025</div><div class="t">Breast Imaging Workup (Right): MAM Digital Add Views, US Breast Limited, MAM Tomosyn Add Views, Imaging Report, Mammogram</div><div class="dt">Dr. Rachael Witham, DO | Joy Vaughan, PA-C — Recall/workup initiated from routine mammogram</div></div>
+<div class="tli"><div class="d">Aug 28, 2024</div><div class="t">MAM Tomosyn Screening Bilateral (Annual)</div><div class="dt">Dr. Rachael Witham, DO</div></div>
+<div class="tli"><div class="d">Mar 18, 2024</div><div class="t">PAP Liquid-Based + HPV High Risk — NORMAL</div><div class="dt">Kristen J. Hardy, PA-C — Normal PAP, HPV negative. Next due: 3/18/2029</div></div>
+<div class="tli"><div class="d">Mar 30, 2023</div><div class="t">Colonoscopy (External) — NORMAL</div><div class="dt">Dr. Rachael Witham, DO — Next due: 3/30/2033</div></div>
+<div class="tli"><div class="d">Nov 2, 2022</div><div class="t">Stress Echo w/Contrast + ECG Monitor</div><div class="dt">Nancy L. Vitello Mikiska, PA-C — Post-cardiac workup</div></div>
+<div class="tli"><div class="d">Oct-Nov 2022</div><div class="t">CV Event Monitor (4-Week) + Mobile Cardiac Telemetry + ECG 12-Lead</div><div class="dt">Nancy L. Vitello Mikiska, PA-C — Cardiac monitoring for palpitations</div></div>
+<div class="tli"><div class="d">Sep 19, 2022</div><div class="t">XR Shoulder Right (2+ views)</div><div class="dt">Kristen J. Hardy, PA-C — Right shoulder evaluation</div></div>
+<div class="tli"><div class="d">Sep 12, 2022</div><div class="t">XR Chest PA and Lateral (ER Visit)</div><div class="dt">Dr. Vanessa Branstetter, MD</div></div>
+<div class="tli"><div class="d">Nov 2017</div><div class="t">CT Abdomen &amp; Pelvis (WO IV Contrast)</div><div class="dt">Wendy K. Smith, ARNP — Historical</div></div>
+</div></div><div class="section"><div class="section-title">Key Provider Notes</div>
+<div class="grid-2">
+<div class="ab-ok"><strong>Dr. Witham, DO (Jun 2022):</strong> "Your labs look pretty good overall. Normal kidney and liver function, thyroid looks good, electrolytes are normal, cholesterol looks good."</div>
+<div class="ab-ok"><strong>Dr. Witham, DO (Apr 2024 — HRT):</strong> "Your hormone labs are looking good. You have been feeling well on your current doses. OK to continue with Koru pharmacy as planned."</div>
+<div class="ab-info"><strong>Joy Vaughan, PA-C (Jun 2025 — Pain):</strong> "ESR within normal range. Rheumatoid factor and ANA within normal limits. Autoimmune causes are far less likely. Continue with plan of care discussed in office."</div>
+<div class="ab-ok"><strong>Kristen Hardy, PA-C (Mar 2024 — PAP):</strong> "Your PAP screen is normal."</div>
+</div></div><div class="section"><div class="section-title">Priority Questions for Your Provider</div>
+<div class="grid-2">
+<div><h3 style="color:#dc2626;margin-bottom:10px">HIGH PRIORITY</h3>
+<ol style="padding-left:20px;line-height:2.2;font-size:.9rem">
+<li>What did my Oct 2025 breast biopsy show? What is the monitoring/treatment plan?</li>
+<li>My testosterone is 393 ng/dL (ref 4-50) — is my HRT compound dose correct?</li>
+<li>Leukopenia is a formal diagnosis since 2021, WBC low since 2018 — has the cause been determined? Should I see a hematologist?</li>
+<li>My glucose rose to 102 — can we do an A1C to screen for pre-diabetes?</li>
+<li>My Vitamin D dropped to 27 despite 5,000 IU daily — what should we change?</li>
+<li>I need Tdap, Shingles, Pneumococcal, and Flu vaccines — can we do these today?</li>
+</ol></div>
+<div><h3 style="color:#f59e0b;margin-bottom:10px">ALSO IMPORTANT</h3>
+<ol style="padding-left:20px;line-height:2.2;font-size:.9rem">
+<li>My TSH has been 4.2-4.7 for 4 years — can we test Free T4 and Free T3?</li>
+<li>My chronic knee pain diagnosis (Jun 2025) — has knee imaging been done? Should we get X-rays or an MRI?</li>
+<li>TMJ arthritis is on file since 2017 — is my knee pain possibly related to a systemic joint issue?</li>
+<li>When should I repeat my lipid panel (last done Jun 2022 — 4 years ago)?</li>
+<li>Why am I on Losartan + Metoprolol — is this for the hypertension diagnosis or the 2022 palpitations/chest pain?</li>
+</ol></div></div></div>
+</div>
+<script>
+
+var QRCODE=(function(){
+var GF_EXP=new Array(512),GF_LOG=new Array(256);
+(function(){var x=1;for(var i=0;i<255;i++){GF_EXP[i]=x;GF_LOG[x]=i;x=x<<1;if(x&256)x^=285;}
+for(var i=255;i<512;i++)GF_EXP[i]=GF_EXP[i-255];}());
+function gf_mul(x,y){if(x==0||y==0)return 0;return GF_EXP[GF_LOG[x]+GF_LOG[y]];}
+function gf_poly_mul(p,q){var r=[];for(var k=0;k<p.length+q.length-1;k++)r.push(0);
+for(var j=0;j<q.length;j++)for(var i=0;i<p.length;i++)r[i+j]^=gf_mul(p[i],q[j]);return r;}
+function rs_generator(n){var g=[1];for(var i=0;i<n;i++)g=gf_poly_mul(g,[1,GF_EXP[i]]);return g;}
+function rs_encode(msg,n){var g=rs_generator(n);var lm=msg.slice();
+for(var i=0;i<n;i++)lm.push(0);
+for(var i=0;i<msg.length;i++){var c=lm[i];if(c!=0)for(var j=0;j<g.length;j++)lm[i+j]^=gf_mul(g[j],c);}
+return lm.slice(msg.length);}
+var NDATA=16,NEC=10,SIZE=25;
+
+function encode(text){
+  var bytes=[];for(var i=0;i<text.length;i++)bytes.push(text.charCodeAt(i)&0xFF);
+  if(bytes.length>NDATA-3)bytes=bytes.slice(0,NDATA-3);
+  var bits=[];
+  function addBits(v,n){for(var i=n-1;i>=0;i--)bits.push((v>>i)&1);}
+  addBits(4,4);addBits(bytes.length,8);
+  for(var i=0;i<bytes.length;i++)addBits(bytes[i],8);
+  addBits(0,4);
+  while(bits.length%8)bits.push(0);
+  var cw=[];
+  for(var i=0;i<bits.length;i+=8){var b=0;for(var j=0;j<8;j++)b=(b<<1)|bits[i+j];cw.push(b);}
+  var pad=[236,17];while(cw.length<NDATA)cw.push(pad[(cw.length-Math.ceil(bits.length/8))%2]);
+  return cw.concat(rs_encode(cw,NEC));
+}
+
+function makeMatrix(text){
+  var m=[];
+  for(var i=0;i<SIZE;i++){m.push([]);for(var j=0;j<SIZE;j++)m[i].push(null);}
+  
+  function setFinder(row,col){
+    for(var dr=-1;dr<=7;dr++){
+      for(var dc=-1;dc<=7;dc++){
+        var r=row+dr,c=col+dc;
+        if(r<0||r>=SIZE||c<0||c>=SIZE)continue;
+        var inOuter=dr>=0&&dr<=6&&dc>=0&&dc<=6;
+        var inInner=dr>=1&&dr<=5&&dc>=1&&dc<=5;
+        var inCore=dr>=2&&dr<=4&&dc>=2&&dc<=4;
+        m[r][c]=(inOuter&&(!inInner||inCore));
+      }
+    }
+  }
+  
+  setFinder(0,0);
+  setFinder(0,SIZE-7);
+  setFinder(SIZE-7,0);
+  
+  // Timing patterns
+  for(var i=8;i<SIZE-8;i++){
+    if(m[6][i]===null)m[6][i]=(i%2==0);
+    if(m[i][6]===null)m[i][6]=(i%2==0);
+  }
+  
+  // Dark module
+  m[SIZE-8][8]=true;
+  
+  // Format info for ECC=M(bits 10), mask=2 (bits 010)
+  // Format: 10 010 -> error+mask bits = 10010
+  // Before masking BCH: compute BCH for 10010
+  // Format string for Level M, Mask 2 = 110011000101111 (from QR spec table)
+  var fb=[1,1,0,0,1,1,0,0,0,1,0,1,1,1,1];
+  // Top-left format positions
+  var fp1=[[8,0],[8,1],[8,2],[8,3],[8,4],[8,5],[8,7],[8,8],[7,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8]];
+  for(var i=0;i<15;i++)m[fp1[i][0]][fp1[i][1]]=!!fb[i];
+  // Top-right and bottom-left copies
+  var fp2r=[[SIZE-1,8],[SIZE-2,8],[SIZE-3,8],[SIZE-4,8],[SIZE-5,8],[SIZE-6,8],[SIZE-7,8]];
+  var fp2c=[[8,SIZE-8],[8,SIZE-7],[8,SIZE-6],[8,SIZE-5],[8,SIZE-4],[8,SIZE-3],[8,SIZE-2],[8,SIZE-1]];
+  // Bottom-left (7 bits, reversed)
+  for(var i=0;i<7;i++)m[fp2r[i][0]][fp2r[i][1]]=!!fb[14-i];
+  // Top-right (8 bits)
+  for(var i=0;i<8;i++)m[fp2c[i][0]][fp2c[i][1]]=!!fb[7+i];
+  
+  // Place data codewords
+  var cw=encode(text),bits=[],b;
+  for(var i=0;i<cw.length;i++)for(var j=7;j>=0;j--)bits.push((cw[i]>>j)&1);
+  
+  var bitIdx=0,upward=true,col=SIZE-1;
+  while(col>0){
+    if(col===6)col--;
+    for(var i=0;i<SIZE;i++){
+      var row=upward?(SIZE-1-i):i;
+      for(var dc=0;dc<2;dc++){
+        var c=col-dc;
+        if(m[row][c]===null){
+          b=bitIdx<bits.length?bits[bitIdx++]:0;
+          if((row+c)%2===0)b^=1; // mask 2
+          m[row][c]=!!b;
+        }
+      }
+    }
+    upward=!upward;col-=2;
+  }
+  return m;
+}
+
+function draw(text,container,size){
+  size=size||120;
+  var m=makeMatrix(text),n=m.length,quiet=4;
+  var cell=Math.floor(size/(n+2*quiet));
+  var w=(n+2*quiet)*cell;
+  var cv=document.createElement('canvas');
+  cv.width=cv.height=w;cv.style.borderRadius='6px';
+  var ctx=cv.getContext('2d');
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,w,w);
+  ctx.fillStyle='#1a3a5c';
+  for(var r=0;r<n;r++)for(var c=0;c<n;c++)
+    if(m[r][c])ctx.fillRect((c+quiet)*cell,(r+quiet)*cell,cell,cell);
+  container.appendChild(cv);
+}
+return{draw:draw};
+})();
+
+
+
+function sq(q){document.getElementById('aiQ').value=q;document.getElementById('aiQ').focus()}
+window.addEventListener('DOMContentLoaded',function(){
+  var ta=document.getElementById('aiQ');
+  if(ta)ta.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.ctrlKey)askC()});
+  var toggle=document.getElementById('apiKeyToggle');
+  var apiInput=document.getElementById('apiKey');
+  if(toggle&&apiInput)toggle.addEventListener('click',function(){
+    apiInput.type=apiInput.type==='password'?'text':'password';
+    toggle.textContent=apiInput.type==='password'?'Show':'Hide';
+  });
+});
+
+var CTX=`You are a knowledgeable, warm, and empowering medical AI assistant helping Kirsten, a healthy and active ~60-year-old woman in rural Spokane, WA with limited access to specialty care. She uses Providence Health / MyChart. Your role is to help her understand her health data and prepare excellent questions for her healthcare providers. You are NOT providing diagnoses, but educational analysis.
+
+OFFICIAL DIAGNOSES (from Health Issues page):
+ACTIVE: Essential Hypertension (since 9/17/2020), Leukopenia (since 3/11/2021), Vitamin D Deficiency (since 9/17/2020), Chronic Pain of Both Knees (since 6/24/2025), TMJ Arthritis (since 5/3/2017), TMJ Arthralgia (since 5/3/2017), Ganglion Cyst of Finger (since 5/7/2020)
+RESOLVED/MANAGED: Menopausal Syndrome - resolved on HRT, OSA - resolved, Insomnia - resolved, Atrophic Vaginitis - resolved on vaginal HRT, Palpitations - managed with medication (Metoprolol), Chest Pain - resolved (associated with Sept 2022 event)
+
+PREVENTIVE CARE STATUS:
+OVERDUE: Tdap vaccine (last 2002!), Shingles vaccine, Pneumococcal vaccine, Influenza vaccine
+UP TO DATE: Mammogram (last 9/16/2025, next 9/16/2027), PAP/HPV (last 3/18/2024, next 3/18/2029), Colonoscopy (last 3/30/2023, next 3/30/2033), Hep C (done 9/29/2017)
+NOTE: Oct 2025 breast biopsy may affect mammogram schedule
+
+CURRENT MEDICATIONS:
+- Losartan 25mg daily (ARB - for Essential Hypertension) - Jan 2026
+- Metoprolol Succinate 25mg daily (beta blocker - hypertension + palpitations) - Jan 2026
+- Compounded Progesterone capsule daily at bedtime (Koru Pharmacy) - Dec 2025, Joy Vaughan PA-C
+- Compounded Estrogen/Estriol cream TOPCLICK, 2 clicks topical/vaginal daily (Koru) - Aug 2025, Dr. Heather Brennan
+- Compounded Vaginal cream PEARL, 2 clicks vaginally daily (Koru) - Aug 2025, Dr. Heather Brennan
+- MetroNIDAZOLE 0.75% cream to nose twice daily (Rosacea) - Apr 2025
+- Supplements: Folic Acid 800mcg, B12 1000mcg, Zinc 15, Vitamin C 100mg, Vitamin D3 5000 IU daily
+
+MOST RECENT LABS (March 5, 2026):
+CMP: Glucose 102 HIGH (ref 74-100 — trending up from 96 in 2025), Creatinine 0.78 Normal, eGFR >60 Normal, Na 138, K 3.9, Ca 9.2, AST 23, ALT 26, Alk Phos 65, Albumin 4.4 - most NORMAL
+TSH: 4.394 uIU/mL (consistent high-normal pattern across 4 years: 4.258 Oct 2022, 4.687 ER Sep 2022)
+Estradiol: 121 pg/mL (HIGH vs postmeno ref <54.7; on HRT)
+Progesterone: 1.4 ng/mL (expected on HRT; postmeno ref 0.0-0.1)
+Testosterone Total: 393 ng/dL VERY HIGH (ref 4-50 female) - nearly 8x upper limit
+Testosterone Free: 5.8 pg/mL HIGH (ref 0.0-4.2)
+DHEA-Sulfate: 115 ug/dL NORMAL (ref 29.4-220.5)
+
+JUN 2025 LABS (pain workup):
+BMP all normal. RF <10 Normal, ESR 7 Normal, ANA Negative, CCP Antibodies Negative. Autoimmune causes for knee pain ruled out.
+
+APR 2024:
+CBC: WBC 3.6 LOW (ref 4.0-10.8), ANC 1.7 LOW (ref 2.0-7.3) - Leukopenia/neutropenia. Pattern: also Abnormal in 2018, 2019, 2021, 2022.
+Vitamin D: 27 ng/mL LOW (ref 30-119) - dropped from 38 (Oct 2022) despite D3 5000 IU daily
+Estradiol on HRT: 34 pg/mL (provider said "looking good")
+
+OCT 2022 (comprehensive pre-HRT baseline):
+Hormones: Estradiol <5.0 (postmeno confirmed), FSH 73.2, LH 32.5
+Thyroid: TSH 4.258, T3 Total 1.0 Normal, Cortisol AM 16.4 Normal
+Vitamin D: 38 Normal. CMP: Glucose 69 (low-normal).
+LIPIDS (Jun 2022): Total Chol 214 (borderline high), HDL 87 (excellent), LDL 112 (slightly high), TG 76 Normal, Chol/HDL ratio 2.5 (low CV risk)
+
+SEPT 2022 ER VISIT: TSH 4.687 flagged HIGH. Troponin I x2 normal (no heart attack). Diagnoses: Palpitations + Chest Pain (both now resolved/managed). Followed by cardiac monitoring (all external results).
+
+OCT 2025: Comprehensive breast workup after mammogram recall -> US-guided biopsy Oct 6. Pathology in external scan documents (critical - must discuss with Dr. Witham).
+
+PROVIDERS: Dr. Rachael Witham DO (primary), Joy Vaughan PA-C, Dr. Heather M. Brennan MD (HRT), Kristen J. Hardy PA-C, Nancy L. Vitello Mikiska PA-C (cardiology)
+
+Please be thorough, compassionate, and empowering. Help Kirsten understand her full health picture and formulate excellent questions for her providers. Always note this is educational information to support her care, not replace it.`;
+
+async function askC(){
+  var k=document.getElementById('apiKey').value.trim();
+  var q=document.getElementById('aiQ').value.trim();
+  if(!k){alert('Please enter your Anthropic API key.\nGet a free key at: console.anthropic.com');return}
+  if(!q){alert('Please type a question first.');return}
+  document.getElementById('loading').style.display='block';
+  document.getElementById('aiR').classList.remove('show');
+  document.getElementById('aiR').innerHTML='';
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'x-api-key':k,'anthropic-version':'2023-06-01','content-type':'application/json','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:2048,system:CTX,messages:[{role:'user',content:q}]})
+    });
+    var d=await r.json();
+    if(d.error)throw new Error(d.error.message||'API Error');
+    var txt=d.content[0].text;
+    var fmt=txt.replace(/**(.+?)**/g,'<strong>$1</strong>').replace(/
+
+/g,'</p><p style="margin-top:10px">').replace(/
+/g,'<br>');
+    document.getElementById('loading').style.display='none';
+    document.getElementById('aiR').innerHTML='<p>'+fmt+'</p><hr style="margin:16px 0;border:1px solid #e2e8f0"><p style="font-size:.8rem;color:#94a3b8">Educational information only — not medical advice. Always consult your healthcare provider.</p>';
+    document.getElementById('aiR').classList.add('show');
+  }catch(e){
+    document.getElementById('loading').style.display='none';
+    document.getElementById('aiR').innerHTML='<p style="color:#dc2626">Error: '+e.message+'</p><p style="font-size:.85rem;margin-top:8px;color:#64748b">Verify your API key at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>. CORS may block direct browser calls — try hosting the file on a web server.</p>';
+    document.getElementById('aiR').classList.add('show');
+  }
+}
+
+// QR Code initialization (single implementation)
+(function(){
+  function initQR(){
+    var container = document.getElementById('qrcode');
+    if(!container) return;
+    var text = window.location.href;
+    if(text.indexOf('blob:') === 0 || text.indexOf('file:') === 0) {
+      text = "Kirsten's Health Plan";
+    }
+    try { QRCODE.draw(text, container, 100); } catch(e) { console.log('QR error:', e); }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQR);
+  else initQR();
+})();
+
+</script>
+</body>
+</html>
