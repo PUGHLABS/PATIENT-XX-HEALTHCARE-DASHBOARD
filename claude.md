@@ -31,15 +31,17 @@ KP-HEALTHCARE/
 
 ### AI Assistant (Claude)
 - **API:** Anthropic Messages API (`https://api.anthropic.com/v1/messages`)
-- **Model:** `claude-sonnet-4-5`
+- **Model:** `claude-sonnet-4-6`
 - **System context:** Large `CTX` string in JS with full health data (diagnoses, meds, labs)
-- **API key:** User enters in browser; stored client-side only. Show/Hide toggle for pasting.
-- **CORS:** Direct browser calls may be blocked on `file://`; host on a web server for production.
+- **API key:** User enters in browser; persisted in `localStorage` (falls back to `sessionStorage`). Show/Hide toggle. Survives browser restarts.
+- **CORS:** Requires `anthropic-dangerous-direct-browser-access: true` header. Works over LAN server; blocked on `file://` protocol.
+- **Required header:** `anthropic-beta: prompt-caching-2024-07-31` (or omit beta; the dangerous-access header is the critical one)
 
 ### QR Code
-- **Implementation:** Custom canvas-based generator (`QRCODE.draw()`) — no CDN
+- **Implementation:** External API — `api.qrserver.com/v1/create-qr-code/` (no CDN/canvas)
 - **Single container:** `#qrcode` in hero
-- **URL fallback:** When opened as `file://` or `blob:`, encodes `"Kirsten's Health Plan"` text
+- **URL encoding:** Encodes live `window.location.href` when served over LAN; falls back to text `"Kirsten Health Plan"` on `file://` or `blob:`
+- **Size:** Requested at `150x150`, rendered at `100×100` in the UI
 
 ### Styling
 - **Theme:** Blue gradient (`#1e3a5f`, `#2d6a9f`, `#4a9fd4`)
@@ -53,9 +55,31 @@ Health data is embedded in:
 
 Keep both in sync when updating labs, meds, or diagnoses.
 
+## Local Server — Quick Start
+```bash
+cd "c:/!PROJECTS/HOME PROJECTS/KIRSTENS HEALTH PLAN/KP-HEALTHCARE"
+npx serve .
+# localhost:3000        — browser on this machine
+# 192.168.0.6:3000     — WiFi LAN (phone / tablet)
+```
+Windows Firewall (run once as Admin if phone can't reach):
+```powershell
+netsh advfirewall firewall add rule name="serve-3000" protocol=TCP dir=in localport=3000 action=allow
+```
+
+## Git Commit Convention
+Include a timestamp in every commit message for reference:
+```
+Short description (YYYY-MM-DD HH:MM)
+
+Body...
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+```
+
 ## Future Improvements (Ideas)
 - [ ] Extract health data to JSON for easier updates
-- [ ] Optional API key persistence (localStorage)
+- [x] API key persistence (localStorage) — done
 - [ ] Print-friendly CSS
 - [ ] Accessibility pass (ARIA, contrast)
-- [ ] Backend proxy for API (avoid CORS)
+- [ ] Backend proxy for API (avoid CORS on file://)
