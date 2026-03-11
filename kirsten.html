@@ -27,10 +27,12 @@
   align-items: center;
   gap: 16px;
 }
+#qrcode { min-width: 100px; min-height: 100px; }
 #qrcode canvas, #qrcode img {
   border-radius: 6px;
   background: white;
   padding: 4px;
+  display: block;
 }
 .qr-label {
   color: rgba(255,255,255,0.9);
@@ -50,7 +52,7 @@
 <div class="hero" style="position:relative;">
   <div class="qr-section" style="position:absolute;top:16px;right:20px;">
     <div class="qr-inner">
-      <div id="qrcode"></div>
+      <div id="qrcode"><img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&amp;data=Kirsten%20Health%20Plan&amp;bgcolor=ffffff&amp;color=1a3a5c" alt="QR Code" width="100" height="100" style="border-radius:6px;background:#fff;padding:4px"></div>
       <div class="qr-label">
         <strong>Kirsten's Health Plan</strong><br>
         <small>Scan to open on another device</small>
@@ -62,6 +64,18 @@
   <div style="margin-top:16px"><span class="badge">Patient: Kirsten</span><span class="badge">Age: ~60</span><span class="badge">Rural Patient - Providence Health</span><span class="badge">Updated: March 2026</span></div>
 </div>
 <div class="container">
+<div class="section" style="padding:14px 20px;margin-bottom:16px;background:#f8fafc;border:1px solid #e2e8f0">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+    <span style="font-weight:700;color:#1e3a5f;font-size:.9rem">Quick Access — Local Server Links</span>
+    <span style="font-size:.75rem;color:#94a3b8">(start server: npx serve . in project folder)</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+    <a href="http://localhost:3000" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#dbeafe;color:#1e40af;border-radius:8px;padding:6px 12px;font-size:.85rem;font-family:monospace;text-decoration:none;border:1px solid #bfdbfe">&#x1F4BB; localhost:3000</a>
+    <a href="http://192.168.0.6:3000" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#166534;border-radius:8px;padding:6px 12px;font-size:.85rem;font-family:monospace;text-decoration:none;border:1px solid #bbf7d0">&#x1F4F6; 192.168.0.6:3000</a>
+    <span style="font-size:.82rem;color:#64748b">Current: <span id="currentUrl" style="font-family:monospace;color:#1e3a5f"></span></span>
+    <button onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=document.getElementById('cpyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy URL'},1500)})" id="cpyBtn" style="padding:4px 10px;border:1px solid #94a3b8;border-radius:6px;background:#e2e8f0;font-size:.8rem;cursor:pointer;color:#1e3a5f">Copy URL</button>
+  </div>
+</div>
 <div class="ab-info">This health plan was compiled from MyChart (test results, medications, health issues, preventive care) to help Kirsten and her provider make informed decisions. Intended to support — not replace — professional medical advice. Designed to facilitate second opinions for a rural patient.</div><div class="kf"><h3>Active Items Requiring Attention</h3><ul>
 <li><strong>Testosterone VERY HIGH (Mar 2026):</strong> Total 393 ng/dL (ref 4-50 female), Free 5.8 pg/mL (ref 0-4.2). Nearly 8x upper limit. Urgent HRT dose review needed.</li>
 <li><strong>Estradiol High vs Postmeno Ref (Mar 2026):</strong> 121 pg/mL — review HRT dosing with prescriber Dr. Brennan / Koru Pharmacy.</li>
@@ -84,11 +98,13 @@
 <h2>AI Health Assistant — Ask Claude About Kirsten's Health</h2>
 <p style="opacity:.85;margin-bottom:20px">Enter your Anthropic API key, then ask questions about your diagnoses, lab results, medications, or get help preparing for provider appointments. Claude has all your health data pre-loaded.</p>
 <div class="api-key-box" style="margin-bottom:16px;background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,.1);box-shadow:0 2px 8px rgba(0,0,0,.06)">
-<label for="apiKey" style="font-size:.9rem;color:#1e3a5f;display:block;margin-bottom:8px;font-weight:600">Anthropic API Key — get one free at <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color:#2d6a9f;text-decoration:underline">console.anthropic.com</a> (stored only in your browser)</label>
+<label for="apiKey" style="font-size:.9rem;color:#1e3a5f;display:block;margin-bottom:8px;font-weight:600">Anthropic API Key — get one free at <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color:#2d6a9f;text-decoration:underline">console.anthropic.com</a> (saved in browser)</label>
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-<input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" style="flex:1;min-width:200px;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;font-size:.95rem;color:#1a202c;background:#f8fafc;font-family:monospace" aria-label="API Key">
-<button type="button" id="apiKeyToggle" style="padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.2);color:white;font-size:.85rem;cursor:pointer;white-space:nowrap">Show</button>
+<input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" tabindex="1" style="flex:1;min-width:200px;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;font-size:.95rem;color:#1a202c;background:#fff;font-family:monospace" aria-label="API Key">
+<button type="button" id="apiKeyToggle" style="padding:10px 16px;border-radius:8px;border:1px solid #94a3b8;background:#e2e8f0;color:#1e3a5f;font-size:.85rem;cursor:pointer;white-space:nowrap">Show</button>
+<button type="button" id="apiKeySave" style="padding:10px 16px;border-radius:8px;border:1px solid #059669;background:#10b981;color:white;font-size:.85rem;cursor:pointer">Save key</button>
 </div>
+<span id="apiKeyStatus" style="font-size:.8rem;color:#059669;margin-top:6px;display:block"></span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
 <button class="qbtn" onclick="sq('What do my most recent hormone levels mean for my HRT dosing?')">HRT Review</button>
@@ -397,12 +413,24 @@ return{draw:draw};
 
 
 
+var API_KEY_STORAGE = 'kp-healthcare-api-key';
+function saveApiKey(v){ try{ if(v){ localStorage.setItem(API_KEY_STORAGE,v); sessionStorage.setItem(API_KEY_STORAGE,v); } }catch(e){} }
+function loadApiKey(){ try{ return localStorage.getItem(API_KEY_STORAGE)||sessionStorage.getItem(API_KEY_STORAGE)||''; }catch(e){ return ''; } }
 function sq(q){document.getElementById('aiQ').value=q;document.getElementById('aiQ').focus()}
 window.addEventListener('DOMContentLoaded',function(){
+  var cu=document.getElementById('currentUrl');
+  if(cu) cu.textContent=window.location.href;
   var ta=document.getElementById('aiQ');
   if(ta)ta.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.ctrlKey)askC()});
   var toggle=document.getElementById('apiKeyToggle');
   var apiInput=document.getElementById('apiKey');
+  if(apiInput){
+    var saved=loadApiKey(); if(saved){ apiInput.value=saved; var st=document.getElementById('apiKeyStatus'); if(st)st.textContent='Key restored from storage'; }
+    apiInput.addEventListener('input',function(){ saveApiKey(apiInput.value.trim()); });
+    apiInput.addEventListener('blur',function(){ saveApiKey(apiInput.value.trim()); });
+  }
+  var saveBtn=document.getElementById('apiKeySave');
+  if(saveBtn&&apiInput){ saveBtn.addEventListener('click',function(){ var v=apiInput.value.trim(); saveApiKey(v); var st=document.getElementById('apiKeyStatus'); if(st)st.textContent=v?'Key saved.':'Enter a key first.'; setTimeout(function(){ if(st)st.textContent=''; },2500); }); }
   if(toggle&&apiInput)toggle.addEventListener('click',function(){
     apiInput.type=apiInput.type==='password'?'text':'password';
     toggle.textContent=apiInput.type==='password'?'Show':'Hide';
@@ -472,18 +500,16 @@ async function askC(){
     var r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'x-api-key':k,'anthropic-version':'2023-06-01','content-type':'application/json','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:2048,system:CTX,messages:[{role:'user',content:q}]})
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:2048,system:CTX,messages:[{role:'user',content:q}]})
     });
     var d=await r.json();
     if(d.error)throw new Error(d.error.message||'API Error');
     var txt=d.content[0].text;
-    var fmt=txt.replace(/**(.+?)**/g,'<strong>$1</strong>').replace(/
-
-/g,'</p><p style="margin-top:10px">').replace(/
-/g,'<br>');
+    var fmt=txt.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'</p><p style="margin-top:10px">').replace(/\n/g,'<br>');
     document.getElementById('loading').style.display='none';
     document.getElementById('aiR').innerHTML='<p>'+fmt+'</p><hr style="margin:16px 0;border:1px solid #e2e8f0"><p style="font-size:.8rem;color:#94a3b8">Educational information only — not medical advice. Always consult your healthcare provider.</p>';
     document.getElementById('aiR').classList.add('show');
+    try{ var k=document.getElementById('apiKey').value.trim(); if(k)localStorage.setItem(API_KEY_STORAGE,k); }catch(e){}
   }catch(e){
     document.getElementById('loading').style.display='none';
     document.getElementById('aiR').innerHTML='<p style="color:#dc2626">Error: '+e.message+'</p><p style="font-size:.85rem;margin-top:8px;color:#64748b">Verify your API key at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>. CORS may block direct browser calls — try hosting the file on a web server.</p>';
@@ -491,19 +517,23 @@ async function askC(){
   }
 }
 
-// QR Code initialization (single implementation)
+// QR Code initialization
 (function(){
-  function initQR(){
-    var container = document.getElementById('qrcode');
-    if(!container) return;
-    var text = window.location.href;
-    if(text.indexOf('blob:') === 0 || text.indexOf('file:') === 0) {
-      text = "Kirsten's Health Plan";
-    }
-    try { QRCODE.draw(text, container, 100); } catch(e) { console.log('QR error:', e); }
-  }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQR);
-  else initQR();
+  var container = document.getElementById('qrcode');
+  var label = document.querySelector('.qr-label small');
+  if(!container) return;
+  var url = window.location.href;
+  var isLocal = url.indexOf('file:')===0 || url.indexOf('blob:')===0;
+  // For hosted pages (local network server or web), encode the actual URL so phones can scan & open.
+  // For file://, encode a text label since file:// URLs can't be opened on other devices.
+  var qrData = isLocal ? 'Kirsten Health Plan' : url;
+  var img = container.querySelector('img') || document.createElement('img');
+  img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(qrData) + '&bgcolor=ffffff&color=1a3a5c';
+  img.width = 100; img.height = 100;
+  img.style.cssText = 'border-radius:6px;background:#fff;padding:4px;display:block';
+  img.alt = 'QR Code';
+  if(!container.querySelector('img')) container.appendChild(img);
+  if(label) label.textContent = isLocal ? 'Serve via local web server to enable QR link' : 'Scan to open on another device';
 })();
 
 </script>
