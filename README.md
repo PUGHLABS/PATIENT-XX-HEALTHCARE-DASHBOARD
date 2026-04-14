@@ -1,6 +1,6 @@
-# KP-HEALTHCARE
+# Patient-XX Healthcare
 
-Personal health plan portal for **Kirsten** — a single-file HTML app that compiles medical records, labs, medications, and provider notes to support informed decisions and second opinions.
+Personal health plan portal for **Patient-XX** — a single-file HTML app that compiles medical records, labs, medications, and provider notes to support informed decisions and second opinions.
 
 > **Educational support only — not medical advice.**
 
@@ -39,9 +39,11 @@ Scan the QR code in the app hero to open on another device.
 
 ```
 KP-HEALTHCARE/
-├── kirsten.html   # Entire app (HTML + CSS + JS + embedded health data)
-├── CLAUDE.md      # AI assistant context and technical notes
-└── README.md      # This file
+├── patient-xx.html   # Main app (HTML + embedded health data)
+├── patient-xx.css    # Stylesheet
+├── patient-xx.js     # JavaScript (QR code, AI assistant, API key storage)
+├── CLAUDE.md         # AI assistant context and technical notes
+└── README.md         # This file
 ```
 
 ---
@@ -62,5 +64,6 @@ KP-HEALTHCARE/
 
 | Date | Summary |
 |------|---------|
+| 2026-04-14 | Anonymize patient name → Patient-XX; extract CSS/JS to separate files |
 | 2026-03-10 | Fix JS SyntaxError (regex literals), update model to claude-sonnet-4-6, fix QR code (external API, LAN URL), add Quick Access cheatsheet, update WiFi IP to 192.168.0.6 |
 | 2026-03-10 | Initial structure — hero, diagnoses, labs, meds, AI assistant, QR code |

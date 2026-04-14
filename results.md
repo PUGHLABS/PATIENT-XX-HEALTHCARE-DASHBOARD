@@ -1,8 +1,8 @@
 # Understanding Potential False Positive Testosterone Results
 
-## Why This Question Matters for Kirsten
+## Why This Question Matters for Patient-XX
 
-Kirsten's testosterone results are striking — 393 ng/dL total (nearly 8x the female upper limit of 50) and free testosterone 5.8 pg/mL (above the 4.2 upper limit). Before assuming this reflects true biological testosterone levels, it's absolutely worth investigating whether something could be interfering with the assay.
+Patient-XX's testosterone results are striking — 393 ng/dL total (nearly 8x the female upper limit of 50) and free testosterone 5.8 pg/mL (above the 4.2 upper limit). Before assuming this reflects true biological testosterone levels, it's absolutely worth investigating whether something could be interfering with the assay.
 
 ---
 
@@ -23,14 +23,14 @@ Important: Immunoassay methods are notoriously inaccurate at low female levels �
 
 ### 🧪 1. Assay Cross-Reactivity (Most Common Technical Cause)
 Many immunoassays cross-react with other steroids or compounds that have similar molecular structures to testosterone:
-- DHEA and DHEA-S — structurally similar; can cause cross-reactivity *(Note: Kirsten's DHEA-S is normal at 115)*
+- DHEA and DHEA-S — structurally similar; can cause cross-reactivity *(Note: Patient-XX's DHEA-S is normal at 115)*
 - Androstenedione
 - Other adrenal androgens
-- Synthetic progestins (though Kirsten is on bioidentical progesterone)
+- Synthetic progestins (though Patient-XX is on bioidentical progesterone)
 
 ### 💊 2. Medications and Supplements
 
-#### Niacinamide (B3) — Kirsten Was Taking This
+#### Niacinamide (B3) — Patient-XX Was Taking This
 This is a very relevant and underappreciated consideration:
 
 - Niacinamide (nicotinamide) has been reported to interfere with immunoassay-based hormone panels
@@ -47,11 +47,11 @@ This is a very relevant and underappreciated consideration:
 | DHEA supplements | Converts to testosterone; can genuinely or artificially elevate levels |
 | Spironolactone | Not applicable here, but worth noting |
 
-### 🌿 3. Kirsten's Compounded HRT — A Critical Consideration
+### 🌿 3. Patient-XX's Compounded HRT — A Critical Consideration
 
 This may actually be the most clinically important factor:
 
-- Kirsten uses compounded estrogen/estriol cream (topical/vaginal) and compounded progesterone
+- Patient-XX uses compounded estrogen/estriol cream (topical/vaginal) and compounded progesterone
 - Compounded creams are a known source of testosterone test interference:
 - Topical application can cause high local skin concentrations that result in supraphysiologic blood levels
 - Compounded preparations have variable absorption and potency
@@ -69,7 +69,7 @@ These would represent *true* elevations, not interference:
 - Ovarian or adrenal tumor (usually dramatic elevations — 393 would warrant investigation)
 - Adrenal hyperplasia
 - PCOS (typically premenopausal)
-- Insulin resistance — *notably, Kirsten's glucose is trending up at 102*
+- Insulin resistance — *notably, Patient-XX's glucose is trending up at 102*
 
 ---
 
@@ -77,7 +77,7 @@ These would represent *true* elevations, not interference:
 
 Many immunoassay platforms (including common ones used by Providence/Quest/LabCorp) use biotin-streptavidin technology. High-dose biotin famously causes false results across multiple hormone tests.
 
-Kirsten's supplement list doesn't explicitly include biotin, but:
+Patient-XX's supplement list doesn't explicitly include biotin, but:
 - Niacinamide products sometimes contain biotin
 - Multivitamins often contain biotin
 - Worth checking every supplement label
@@ -93,11 +93,11 @@ Standard recommendation: Stop biotin-containing supplements 48-72 hours before h
 2. *"Is this lab validated for measuring testosterone at low female-range levels?"*
 3. *"Could niacinamide or topical compounded creams interfere with your platform?"*
 
-> 💡 LC-MS/MS is the gold standard for female testosterone — if Kirsten's result was from an immunoassay, repeating it with LC-MS/MS is entirely reasonable to request.
+> 💡 LC-MS/MS is the gold standard for female testosterone — if Patient-XX's result was from an immunoassay, repeating it with LC-MS/MS is entirely reasonable to request.
 
 ---
 
-## Putting It All Together for Kirsten's Situation
+## Putting It All Together for Patient-XX's Situation
 
 | Factor | Likelihood of Contributing |
 |--------|---------------------------|
@@ -133,7 +133,7 @@ A result this dramatically elevated in a postmenopausal woman on compounded topi
 - Niacinamide supplementation
 - Possible biotin exposure
 
-...creates a perfect storm for potential false elevation. This is a great catch by Kirsten to question, and her providers should take this seriously.
+...creates a perfect storm for potential false elevation. This is a great catch by Patient-XX to question, and her providers should take this seriously.
 
 ---
-*This is educational information to support Kirsten's conversations with her healthcare team, not a diagnosis or medical advice.*
+*This is educational information to support Patient-XX's conversations with her healthcare team, not a diagnosis or medical advice.*

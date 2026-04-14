@@ -1,21 +1,23 @@
-# KP-HEALTHCARE — Context for AI Assistants
+# Patient-XX Healthcare — Context for AI Assistants
 
 ## Project Overview
-Personal health plan portal for Kirsten (~60, rural patient, Providence Health / MyChart). Single-page HTML app that compiles medical data to support informed decisions and second opinions. **Educational support only — not medical advice.**
+Personal health plan portal for Patient-XX (~60, rural patient, Providence Health / MyChart). Single-page HTML app that compiles medical data to support informed decisions and second opinions. **Educational support only — not medical advice.**
 
 ## Repo Structure
 ```
 KP-HEALTHCARE/
-├── Kirsten.html      # Main health plan page (single file, no build)
+├── patient-xx.html   # Main health plan page
+├── patient-xx.css    # Stylesheet (extracted)
+├── patient-xx.js     # JavaScript (extracted)
 ├── README.md
 ├── claude.md         # This file — context for future edits
 └── .git/
 ```
 
-## Kirsten.html — Key Sections
+## patient-xx.html — Key Sections
 | Section | Purpose |
 |---------|---------|
-| Hero | Title, badges (Patient, Age, Rural, Updated), QR code (top-right) |
+| Hero | Title, badges (Patient, Age, Rural, Updated), QR code (top-right), directory path |
 | Active Items | 9 urgent items needing attention (`.kf`) |
 | Health Overview | Stats (119 results, 9 concerns, 2003–2026 span, etc.) |
 | AI Assistant | Anthropic API, API key input, quick-question buttons, textarea, response area |
@@ -32,7 +34,7 @@ KP-HEALTHCARE/
 ### AI Assistant (Claude)
 - **API:** Anthropic Messages API (`https://api.anthropic.com/v1/messages`)
 - **Model:** `claude-sonnet-4-6`
-- **System context:** Large `CTX` string in JS with full health data (diagnoses, meds, labs)
+- **System context:** Large `CTX` string in `patient-xx.js` with full health data (diagnoses, meds, labs)
 - **API key:** User enters in browser; persisted in `localStorage` (falls back to `sessionStorage`). Show/Hide toggle. Survives browser restarts.
 - **CORS:** Requires `anthropic-dangerous-direct-browser-access: true` header. Works over LAN server; blocked on `file://` protocol.
 - **Required header:** `anthropic-beta: prompt-caching-2024-07-31` (or omit beta; the dangerous-access header is the critical one)
@@ -40,7 +42,7 @@ KP-HEALTHCARE/
 ### QR Code
 - **Implementation:** External API — `api.qrserver.com/v1/create-qr-code/` (no CDN/canvas)
 - **Single container:** `#qrcode` in hero
-- **URL encoding:** Encodes live `window.location.href` when served over LAN; falls back to text `"Kirsten Health Plan"` on `file://` or `blob:`
+- **URL encoding:** Encodes live `window.location.href` when served over LAN; falls back to text `"Patient-XX Health Plan"` on `file://` or `blob:`
 - **Size:** Requested at `150x150`, rendered at `100×100` in the UI
 
 ### Styling
@@ -50,8 +52,8 @@ KP-HEALTHCARE/
 
 ## Data Update Workflow
 Health data is embedded in:
-1. HTML (diagnoses, meds, labs, tables)
-2. `CTX` system prompt in `<script>` (JS)
+1. `patient-xx.html` (diagnoses, meds, labs, tables)
+2. `CTX` system prompt in `patient-xx.js`
 
 Keep both in sync when updating labs, meds, or diagnoses.
 
