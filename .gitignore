@@ -1,0 +1,17 @@
+# API keys and secrets — never commit these
+API.gitignore
+.env
+.env.*
+*.key
+*.secret
+*secret*
+*api-key*
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local notes
+readme.txt
+results.md

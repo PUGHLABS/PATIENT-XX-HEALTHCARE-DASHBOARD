@@ -9,14 +9,14 @@ Personal health plan portal for **Patient-XX** — a single-file HTML app that c
 ## Quick Start
 
 ```bash
-cd "c:/!PROJECTS/HOME PROJECTS/KIRSTENS HEALTH PLAN/KP-HEALTHCARE"
+cd "path/to/XX-HEALTHCARE"
 npx serve .
 ```
 
 | URL | Who |
 |-----|-----|
 | http://localhost:3000 | This machine |
-| http://192.168.0.6:3000 | Phone / tablet on WiFi |
+| http://&lt;your-lan-ip&gt;:3000 | Phone / tablet on WiFi |
 
 Scan the QR code in the app hero to open on another device.
 
@@ -38,13 +38,21 @@ Scan the QR code in the app hero to open on another device.
 ## File Structure
 
 ```
-KP-HEALTHCARE/
-├── patient-xx.html   # Main app (HTML + embedded health data)
-├── patient-xx.css    # Stylesheet
-├── patient-xx.js     # JavaScript (QR code, AI assistant, API key storage)
+XX-HEALTHCARE/
+├── index.html        # Main app — health data sections (edit per patient)
+├── styles.css        # Stylesheet — generic, do not edit
+├── app.js            # App logic — generic, do not edit
+├── patient-data.js   # Patient config: ID, metadata, AI system prompt ← edit this
 ├── CLAUDE.md         # AI assistant context and technical notes
 └── README.md         # This file
 ```
+
+## Setting Up a New Patient
+
+1. Use the GitHub template button to create a new repo (or copy this folder)
+2. Edit **`patient-data.js`** — set `PATIENT_ID`, age, insurance, updated date, and the `CTX` AI prompt
+3. Edit the health data sections in **`index.html`** (everything below the `PATIENT DATA SECTIONS` comment)
+4. Leave `app.js` and `styles.css` untouched
 
 ---
 
@@ -64,6 +72,7 @@ KP-HEALTHCARE/
 
 | Date | Summary |
 |------|---------|
+| 2026-04-14 | Refactor to template: rename to index/styles/app, extract patient-data.js, anonymize for public repo |
 | 2026-04-14 | Anonymize patient name → Patient-XX; extract CSS/JS to separate files |
-| 2026-03-10 | Fix JS SyntaxError (regex literals), update model to claude-sonnet-4-6, fix QR code (external API, LAN URL), add Quick Access cheatsheet, update WiFi IP to 192.168.0.6 |
+| 2026-03-10 | Fix JS SyntaxError (regex literals), update model to claude-sonnet-4-6, fix QR code (external API, LAN URL), add Quick Access cheatsheet |
 | 2026-03-10 | Initial structure — hero, diagnoses, labs, meds, AI assistant, QR code |

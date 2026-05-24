@@ -5,16 +5,23 @@ Personal health plan portal for Patient-XX (~60, rural patient, Providence Healt
 
 ## Repo Structure
 ```
-KP-HEALTHCARE/
-├── patient-xx.html   # Main health plan page
-├── patient-xx.css    # Stylesheet (extracted)
-├── patient-xx.js     # JavaScript (extracted)
+XX-HEALTHCARE/
+├── index.html        # Main health plan page (health data sections)
+├── styles.css        # Stylesheet
+├── app.js            # App logic (QR code, AI assistant, API key) — generic
+├── patient-data.js   # Patient config: PATIENT_ID, metadata, CTX prompt ← edit this per patient
 ├── README.md
-├── claude.md         # This file — context for future edits
+├── CLAUDE.md         # This file — context for future edits
 └── .git/
 ```
 
-## patient-xx.html — Key Sections
+## Adding a New Patient
+1. Copy this repo (or use GitHub template feature)
+2. Edit `patient-data.js`: set `PATIENT_ID`, `PATIENT_AGE`, `PATIENT_INSURANCE`, `PATIENT_UPDATED`, and the `CTX` system prompt
+3. Edit the health data sections in `index.html` (everything below the `PATIENT DATA SECTIONS` comment)
+4. Do NOT edit `app.js` or `styles.css` — they are generic
+
+## index.html — Key Sections
 | Section | Purpose |
 |---------|---------|
 | Hero | Title, badges (Patient, Age, Rural, Updated), QR code (top-right), directory path |
@@ -34,7 +41,7 @@ KP-HEALTHCARE/
 ### AI Assistant (Claude)
 - **API:** Anthropic Messages API (`https://api.anthropic.com/v1/messages`)
 - **Model:** `claude-sonnet-4-6`
-- **System context:** Large `CTX` string in `patient-xx.js` with full health data (diagnoses, meds, labs)
+- **System context:** Large `CTX` string in `patient-data.js` with full health data (diagnoses, meds, labs)
 - **API key:** User enters in browser; persisted in `localStorage` (falls back to `sessionStorage`). Show/Hide toggle. Survives browser restarts.
 - **CORS:** Requires `anthropic-dangerous-direct-browser-access: true` header. Works over LAN server; blocked on `file://` protocol.
 - **Required header:** `anthropic-beta: prompt-caching-2024-07-31` (or omit beta; the dangerous-access header is the critical one)
@@ -52,17 +59,17 @@ KP-HEALTHCARE/
 
 ## Data Update Workflow
 Health data is embedded in:
-1. `patient-xx.html` (diagnoses, meds, labs, tables)
-2. `CTX` system prompt in `patient-xx.js`
+1. `index.html` (diagnoses, meds, labs, tables — display)
+2. `CTX` system prompt in `patient-data.js` (AI context)
 
 Keep both in sync when updating labs, meds, or diagnoses.
 
 ## Local Server — Quick Start
 ```bash
-cd "c:/!PROJECTS/HOME PROJECTS/KIRSTENS HEALTH PLAN/KP-HEALTHCARE"
+cd "path/to/XX-HEALTHCARE"
 npx serve .
 # localhost:3000        — browser on this machine
-# 192.168.0.6:3000     — WiFi LAN (phone / tablet)
+# <your-lan-ip>:3000   — WiFi LAN (phone / tablet)
 ```
 Windows Firewall (run once as Admin if phone can't reach):
 ```powershell

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Health Plan</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="hero" style="position:relative;">
+  <div class="qr-section" style="position:absolute;top:16px;right:20px;">
+    <div class="qr-inner">
+      <div id="qrcode"></div>
+      <div class="qr-label">
+        <strong id="qr-title">Patient Health Plan</strong><br>
+        <small>Scan to open on another device</small>
+      </div>
+    </div>
+  </div>
+  <h1>Patient Health Plan</h1>
+  <div class="subtitle">Comprehensive Medical Record &amp; AI Health Management Portal</div>
+  <div id="patient-badges" style="margin-top:16px"></div>
+</div>
+<div class="container">
+<div class="section" style="padding:14px 20px;margin-bottom:16px;background:#f8fafc;border:1px solid #e2e8f0">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+    <span style="font-weight:700;color:#1e3a5f;font-size:.9rem">Quick Access — Local Server Links</span>
+    <span style="font-size:.75rem;color:#94a3b8">(start server: npx serve . in project folder)</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+    <a href="http://localhost:3000" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#dbeafe;color:#1e40af;border-radius:8px;padding:6px 12px;font-size:.85rem;font-family:monospace;text-decoration:none;border:1px solid #bfdbfe">&#x1F4BB; localhost:3000</a>
+<span style="font-size:.82rem;color:#64748b">Current: <span id="currentUrl" style="font-family:monospace;color:#1e3a5f"></span></span>
+    <button onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=document.getElementById('cpyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy URL'},1500)})" id="cpyBtn" style="padding:4px 10px;border:1px solid #94a3b8;border-radius:6px;background:#e2e8f0;font-size:.8rem;cursor:pointer;color:#1e3a5f">Copy URL</button>
+  </div>
+</div>
+<!-- ============================================================ -->
+<!-- PATIENT DATA SECTIONS — Update everything below for each    -->
+<!-- new patient. Also update patient-data.js (CTX + metadata).  -->
+<!-- ============================================================ -->
+<div class="ab-info">This health plan was compiled from MyChart (test results, medications, health issues, preventive care) to help Patient-XX and their provider make informed decisions. Intended to support — not replace — professional medical advice. Designed to facilitate second opinions for a rural patient.</div><div class="kf"><h3>Active Items Requiring Attention</h3><ul>
+<li><strong>Testosterone VERY HIGH (Mar 2026):</strong> Total 393 ng/dL (ref 4-50 female), Free 5.8 pg/mL (ref 0-4.2). Nearly 8x upper limit. Urgent HRT dose review needed.</li>
+<li><strong>Estradiol High vs Postmeno Ref (Mar 2026):</strong> 121 pg/mL — review HRT dosing with prescriber Dr. Brennan / Koru Pharmacy.</li>
+<li><strong>Glucose Borderline High (Mar 2026):</strong> 102 mg/dL (ref 74-100). Trending up. Request A1C screening.</li>
+<li><strong>TSH High-Normal Pattern (Mar 2026):</strong> 4.394 — consistent 4.2-4.7 across 4 years. Consider Free T4/T3 to rule out subclinical hypothyroidism.</li>
+<li><strong>Leukopenia (FORMAL DIAGNOSIS, Mar 2021):</strong> WBC 3.6 (Apr 2024), ANC 1.7. Recurring Abnormal CBC since 2018. Has this been formally investigated?</li>
+<li><strong>Vitamin D Deficiency (FORMAL DIAGNOSIS, Sep 2020):</strong> Level dropped to 27 despite 5,000 IU D3 daily. Needs dose increase or absorption workup.</li>
+<li><strong>Breast Biopsy (Oct 2025):</strong> US-guided biopsy performed. Pathology in external scans — MOST CRITICAL: review results with Dr. Witham.</li>
+<li><strong>Chronic Knee Pain (FORMAL DIAGNOSIS, Jun 2025):</strong> Autoimmune causes ruled out. Imaging of knees not yet documented. Ask about X-ray or MRI.</li>
+<li><strong>4 Overdue Vaccinations:</strong> Tdap (last 2002!), Shingles, Pneumococcal, Influenza — discuss at Mar 26, 2026 appointment.</li>
+</ul></div><div class="section"><div class="section-title">Health Overview</div>
+<div class="grid-3">
+<div class="sc"><div class="sv">119</div><div class="sl">Total Test Results on File</div></div>
+<div class="sc"><div class="sv" style="color:#dc2626">9</div><div class="sl">Active Concerns Flagged</div></div>
+<div class="sc"><div class="sv">2003-2026</div><div class="sl">Medical History Span</div></div>
+<div class="sc"><div class="sv">7</div><div class="sl">Active Diagnoses</div></div>
+<div class="sc"><div class="sv">5</div><div class="sl">Active Rx Medications</div></div>
+<div class="sc"><div class="sv" style="color:#059669">Current</div><div class="sl">Mammogram, PAP, Colonoscopy</div></div>
+</div></div><div class="ai-box">
+<h2>AI Health Assistant — Ask Claude About Patient-XX's Health</h2>
+<p style="opacity:.85;margin-bottom:20px">Enter your Anthropic API key, then ask questions about your diagnoses, lab results, medications, or get help preparing for provider appointments. Claude has all your health data pre-loaded.</p>
+<div class="api-key-box" style="margin-bottom:16px;background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,.1);box-shadow:0 2px 8px rgba(0,0,0,.06)">
+<label for="apiKey" style="font-size:.9rem;color:#1e3a5f;display:block;margin-bottom:8px;font-weight:600">Anthropic API Key — get one free at <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color:#2d6a9f;text-decoration:underline">console.anthropic.com</a> (saved in browser)</label>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" tabindex="1" style="flex:1;min-width:200px;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;font-size:.95rem;color:#1a202c;background:#fff;font-family:monospace" aria-label="API Key">
+<button type="button" id="apiKeyToggle" style="padding:10px 16px;border-radius:8px;border:1px solid #94a3b8;background:#e2e8f0;color:#1e3a5f;font-size:.85rem;cursor:pointer;white-space:nowrap">Show</button>
+<button type="button" id="apiKeySave" style="padding:10px 16px;border-radius:8px;border:1px solid #059669;background:#10b981;color:white;font-size:.85rem;cursor:pointer">Save key</button>
+</div>
+<span id="apiKeyStatus" style="font-size:.8rem;color:#059669;margin-top:6px;display:block"></span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+<button class="qbtn" onclick="sq('What do my most recent hormone levels mean for my HRT dosing?')">HRT Review</button>
+<button class="qbtn" onclick="sq('My TSH has been 4.2-4.7 for years. Could I have subclinical hypothyroidism?')">Thyroid</button>
+<button class="qbtn" onclick="sq('I have a formal diagnosis of leukopenia since 2021 with WBC low since 2018. What could cause this?')">Leukopenia</button>
+<button class="qbtn" onclick="sq('My glucose rose from 96 to 102. Should I be concerned about diabetes risk?')">Glucose Trend</button>
+<button class="qbtn" onclick="sq('My Vitamin D dropped to 27 despite 5,000 IU daily. What should I do?')">Vitamin D</button>
+<button class="qbtn" onclick="sq('I had a breast biopsy in Oct 2025. What follow-up questions should I ask my doctor?')">Breast Biopsy</button>
+<button class="qbtn" onclick="sq('I have chronic knee pain and TMJ arthritis. Could these be related? What could be causing both?')">Joint Pain</button>
+<button class="qbtn" onclick="sq('What vaccines am I overdue for and why are they important at age 60?')">Overdue Vaccines</button>
+<button class="qbtn" onclick="sq('I am a rural patient with limited specialist access. What telehealth and second opinion options should I know about?')">Rural Health</button>
+<button class="qbtn" onclick="sq('Can you give me a complete summary of my most important health priorities and what to discuss at my next appointment?')">Full Summary</button>
+<button class="qbtn" onclick="sq('What lifestyle changes, supplements, and diet modifications would help my specific health issues?')">Lifestyle &amp; Diet</button>
+<button class="qbtn" onclick="sq('What are the most important things to know about bioidentical compounded HRT and monitoring at my age?')">BHRT Education</button>
+</div>
+<div style="background:white;border-radius:12px;padding:4px">
+<textarea class="ai-textarea" id="aiQ" placeholder="Type your health question here... e.g. 'What does testosterone of 393 ng/dL mean for me?' or 'I have knee pain, low WBC, and high-normal TSH — could these be connected?' Press Ctrl+Enter to submit."></textarea>
+<button class="ai-btn" onclick="askC()">Ask Claude for Analysis</button>
+</div>
+<div id="loading" style="display:none;text-align:center;color:rgba(255,255,255,.9);padding:20px;font-size:1rem"><span style="display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.4);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:10px"></span>Analyzing your complete health record with Claude...</div>
+<div class="ai-response" id="aiR"></div>
+</div><div class="section"><div class="section-title">Official Diagnoses / Health Issues on File</div>
+<div class="ab-info" style="margin-bottom:16px">These are the formal diagnoses documented in Patient-XX's medical record in MyChart. Very important context for any provider visit or second opinion.</div>
+
+<h3 style="color:#dc2626;margin-bottom:10px;font-size:.95rem">Active / Current Health Issues</h3>
+<div class="grid-2">
+<div class="mc" style="border-left:3px solid #dc2626"><div class="mn">Essential Hypertension</div><div class="md">Started: September 17, 2020</div><div class="mm">Explains Losartan + Metoprolol prescriptions. Blood pressure management ongoing.</div><span class="mt">Cardiovascular</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Leukopenia</div><div class="md">Started: March 11, 2021</div><div class="mm">Formally diagnosed low white blood cell count. Confirms recurring low WBC pattern in labs (2018-2024). Needs ongoing monitoring.</div><span class="mt">Hematology</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Vitamin D Deficiency</div><div class="md">Started: September 17, 2020</div><div class="mm">Ongoing despite D3 5,000 IU supplementation. Level dropped to 27 ng/mL in Apr 2024. Needs recheck.</div><span class="mt">Nutritional</span></div>
+<div class="mc" style="border-left:3px solid #f59e0b"><div class="mn">Chronic Pain of Both Knees</div><div class="md">Started: June 24, 2025</div><div class="mm">This is the "unexplained pain" from the Jun 2025 workup. Autoimmune causes ruled out (RF, ANA, CCP, ESR all normal). No specific etiology documented.</div><span class="mt">Musculoskeletal / Pain</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">TMJ Arthritis</div><div class="md">Started: May 3, 2017</div><div class="mm">Temporomandibular joint arthritis. Long-standing condition.</div><span class="mt">Dental / Jaw</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">TMJ Arthralgia</div><div class="md">Started: May 3, 2017</div><div class="mm">TMJ pain. Co-diagnosis with TMJ arthritis.</div><span class="mt">Dental / Jaw</span></div>
+<div class="mc" style="border-left:3px solid #64748b"><div class="mn">Ganglion Cyst of Finger</div><div class="md">Started: May 7, 2020</div><div class="mm">Benign cystic lesion. Usually managed conservatively.</div><span class="mt">Orthopedic / Benign</span></div>
+</div>
+
+<h3 style="color:#059669;margin:20px 0 10px;font-size:.95rem">Resolved / Removed Health Issues (Patient-Reported)</h3>
+<div class="grid-2">
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Menopausal Syndrome (Hot Flashes)</div><div class="md">Started: 5/3/2017 | RESOLVED</div><div class="mm">Patient note: "Currently on Hormone Therapy. Menopause symptoms are gone." - HRT working effectively for menopausal symptoms.</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">OSA (Obstructive Sleep Apnea)</div><div class="md">Started: 5/3/2017 | RESOLVED</div><div class="mm">Patient note: "I don't have sleep apnea anymore." - Resolved without documented treatment (weight loss? positional?)</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Insomnia</div><div class="md">Started: 7/17/2018 | RESOLVED</div><div class="mm">Patient note: "I don't have insomnia anymore."</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Atrophic Vaginitis</div><div class="md">Started: 7/17/2018 | RESOLVED</div><div class="mm">Patient note: "I don't have Atrophic vaginitis anymore." - Likely resolved with vaginal HRT (estriol cream).</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #f59e0b"><div class="mn">Palpitations</div><div class="md">Started: 9/28/2022 | MANAGED</div><div class="mm">Patient note: "Taking medicine" - Metoprolol (beta-blocker) prescribed Jan 2026 controls heart palpitations. This was likely triggered by the Sept 2022 cardiac event/evaluation.</div></div>
+<div class="mc" style="opacity:.8;border-left:3px solid #059669"><div class="mn">Chest Pain</div><div class="md">Started: 9/28/2022 | RESOLVED</div><div class="mm">Patient note: "No longer have chest pain." - Associated with the Sept 2022 ER visit and cardiac workup.</div></div>
+</div>
+
+<div class="ab-warn" style="margin-top:16px"><strong>Key Insight:</strong> The "unexplained pain" from the Jun 2025 labs is now identified as "Chronic Pain of Both Knees" — a formal diagnosis. Autoimmune causes ruled out. This suggests osteoarthritis, meniscal issues, or other mechanical/degenerative cause. With TMJ arthritis also on file, there may be a systemic joint involvement pattern worth discussing. Ask: "What is the suspected cause of my knee pain and has imaging of my knees been done?"</div>
+</div><div class="section"><div class="section-title">Preventive Care Status</div>
+<div class="ab-err" style="margin-bottom:16px"><strong>4 OVERDUE Vaccinations — discuss at your March 26, 2026 appointment:</strong> Tdap (last done 2002 — 24 years ago!), Shingles vaccine, Pneumococcal vaccine, Influenza vaccine.</div>
+
+<div class="grid-2">
+<div>
+<h3 style="color:#dc2626;margin-bottom:10px;font-size:.95rem">Overdue / Pending</h3>
+<table class="lab-table"><thead><tr><th>Vaccine/Service</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Tdap (Tetanus/Diphtheria/Pertussis)</td><td><span class="h">OVERDUE</span></td><td>Last done 3/26/2002 — 24 years ago! Recommended every 10 years.</td></tr>
+<tr><td>Shingles Vaccine (Shingrix)</td><td><span class="h">OVERDUE</span></td><td>Recommended for all adults 50+. 2-dose series. Important at age ~60.</td></tr>
+<tr><td>Pneumococcal Vaccine</td><td><span class="h">OVERDUE</span></td><td>PCV15 or PCV20 recommended for adults 65+ (or 60+ with certain conditions).</td></tr>
+<tr><td>Influenza Vaccine</td><td><span class="ab">OVERDUE</span></td><td>Annual flu shot. Get each fall.</td></tr>
+</tbody></table>
+</div>
+<div>
+<h3 style="color:#059669;margin-bottom:10px;font-size:.95rem">Up To Date - Cancer Screenings</h3>
+<table class="lab-table"><thead><tr><th>Screening</th><th>Last Done</th><th>Next Due</th><th>Status</th></tr></thead><tbody>
+<tr><td>Breast Cancer (Mammogram)</td><td>9/16/2025</td><td>9/16/2027</td><td><span class="n">Current</span></td></tr>
+<tr><td>Cervical Cancer (PAP/HPV)</td><td>3/18/2024</td><td>3/18/2029</td><td><span class="n">Current</span></td></tr>
+<tr><td>Colon Cancer (Colonoscopy)</td><td>3/30/2023</td><td>3/30/2033</td><td><span class="n">Current</span></td></tr>
+<tr><td>Hepatitis C Screening</td><td>9/29/2017</td><td>N/A</td><td><span class="n">Completed</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">All major cancer screenings are current. Next mammogram not due until 2027 — however, the Oct 2025 biopsy may require a different follow-up schedule. Confirm with Dr. Witham.</div>
+</div>
+</div></div><div class="section"><div class="section-title">Current Medications &amp; Supplements</div>
+<div class="ab-info"><strong>Pharmacies:</strong> Walgreens | Koru Pharmacy (Compounding)</div>
+<h3 style="color:#1e3a5f;margin:12px 0 8px">Cardiovascular (for Essential Hypertension + Palpitations)</h3>
+<div class="mc"><div class="mn">Losartan 25 mg tablet (COZAAR)</div><div class="md">Take 1 tablet by mouth daily</div><div class="mm">Prescribed: Jan 30, 2026 | Dr. Rachael Witham, DO | Walgreens | 90 tabs / 90 days</div><span class="mt">ARB — Blood Pressure / Kidney Protection</span></div>
+<div class="mc"><div class="mn">Metoprolol Succinate 25 mg 24hr (TOPROL-XL)</div><div class="md">Take 1 tablet by mouth daily</div><div class="mm">Prescribed: Jan 2, 2026 | Dr. Rachael Witham, DO | Walgreens | 90 tabs / 90 days</div><span class="mt">Beta Blocker — Heart Rate / BP / Palpitations</span></div>
+<h3 style="color:#7c3aed;margin:16px 0 8px">Hormone Replacement Therapy — Compounded Bioidentical (Koru Pharmacy)</h3>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Progesterone Capsule</div><div class="md">Take 1 capsule by mouth daily at bedtime</div><div class="mm">Prescribed: Dec 30, 2025 | Joy Vaughan, PA-C | Qty: 90</div><span class="mt">Progesterone HRT</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Estrogen/Estriol Cream [TOPCLICK]</div><div class="md">Apply 2 clicks (0.5ml) topically or vaginally once daily</div><div class="mm">Prescribed: Aug 11, 2025 | Dr. Heather M. Brennan, MD | 30g</div><span class="mt">Estrogen HRT</span></div>
+<div class="mc" style="border-left:3px solid #7c3aed"><div class="mn">Compounded Vaginal Cream [PEARL]</div><div class="md">Apply 2 clicks (0.5ml) vaginally once daily</div><div class="mm">Prescribed: Aug 11, 2025 | Dr. Heather M. Brennan, MD | 30mL</div><span class="mt">Vaginal HRT (Estriol/Testosterone)</span></div>
+<h3 style="color:#dc2626;margin:16px 0 8px">Topical Treatment</h3>
+<div class="mc" style="border-left:3px solid #dc2626"><div class="mn">MetroNIDAZOLE 0.75% Cream (MetroCream)</div><div class="md">Apply topically to nose twice daily</div><div class="mm">Started: April 21, 2025 | MA Samantha V</div><span class="mt">Rosacea / Antibacterial</span></div>
+<h3 style="color:#059669;margin:16px 0 8px">Supplements (OTC)</h3>
+<div class="grid-2">
+<div class="mc"><div class="mn">Folic Acid 800 mcg</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Vitamin B-12 1,000 mcg (Cyanocobalamin)</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Zinc 15 (Zinc Sulfate)</div><div class="md">Take by mouth</div></div>
+<div class="mc"><div class="mn">Vitamin C 100 mg (Ascorbic Acid)</div><div class="md">1 tablet daily</div></div>
+<div class="mc"><div class="mn">Vitamin D-3 5,000 IU (Cholecalciferol 125 mcg)</div><div class="md">1 tablet daily | Dr. Rachael Witham, DO</div></div>
+</div></div><div class="section"><div class="section-title">Hormone Levels — Multi-Year Trend (HRT Monitoring)</div>
+<div class="ab-warn">Postmenopausal confirmed: FSH 73.2, Estradiol &lt;5.0 in Oct 2022 (pre-HRT). On bioidentical compounded HRT since ~Sept 2023. Dr. Witham: "hormone labs looking good" Apr 2024 — but Mar 2026 shows testosterone now VERY HIGH.</div>
+<table class="lab-table" style="margin-top:12px"><thead><tr><th>Test</th><th>Mar 2026</th><th>Apr 2024 (on HRT)</th><th>Oct 2022 (pre-HRT)</th><th>Reference</th><th>Notes</th></tr></thead><tbody>
+<tr><td><strong>Estradiol</strong></td><td>121 pg/mL <span class="h">HIGH*</span></td><td>34 pg/mL <span class="n">OK on HRT</span></td><td>&lt;5.0 pg/mL <span class="n">Postmeno</span></td><td>Postmeno: &lt;54.7</td><td>Above postmeno ref. HRT dose review.</td></tr>
+<tr><td><strong>Testosterone Total</strong></td><td>393 ng/dL <span class="h">VERY HIGH</span></td><td>N/A</td><td>N/A</td><td>Female: 4-50 ng/dL</td><td>Nearly 8x upper limit — urgent review.</td></tr>
+<tr><td><strong>Testosterone Free</strong></td><td>5.8 pg/mL <span class="h">HIGH</span></td><td>N/A</td><td>N/A</td><td>0.0-4.2 pg/mL</td><td>Elevated with total testosterone.</td></tr>
+<tr><td><strong>Progesterone</strong></td><td>1.4 ng/mL</td><td>N/A</td><td>N/A</td><td>Postmeno: 0.0-0.1</td><td>Expected on progesterone HRT.</td></tr>
+<tr><td><strong>DHEA-Sulfate</strong></td><td>115 ug/dL <span class="n">Normal</span></td><td>N/A</td><td>N/A</td><td>29.4-220.5 ug/dL</td><td>Normal</td></tr>
+<tr><td><strong>FSH</strong></td><td>N/A</td><td>N/A</td><td>73.2 mIU/mL</td><td>Postmeno: 25.8-134.8</td><td>Confirms menopause</td></tr>
+<tr><td><strong>LH</strong></td><td>N/A</td><td>N/A</td><td>32.5 mIU/mL</td><td>Postmeno: 7.7-58.5</td><td>Confirms menopause</td></tr>
+</tbody></table></div><div class="section"><div class="section-title">Thyroid Function — Multi-Year Trend</div>
+<div class="ab-warn">TSH consistently HIGH-NORMAL (4.2-4.7) across 2022-2026. ER in Sept 2022 flagged TSH 4.687 as ABNORMAL using stricter ref range 0.3-4.0. Pattern warrants Free T4/T3 testing to rule out subclinical hypothyroidism. Also on record: Cortisol normal (16.4, Oct 2022).</div>
+<table class="lab-table" style="margin-top:12px"><thead><tr><th>Test</th><th>Mar 2026</th><th>Oct 2022</th><th>Sep 2022 (ER)</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>TSH</td><td>4.394</td><td>4.258</td><td>4.687</td><td>0.45-5.1 / 0.3-4.0 (some labs)</td><td><span class="ab">Persistent High-Normal Pattern</span></td></tr>
+<tr><td>T3 Total (Oct 2022)</td><td colspan="3">1.0 ng/mL</td><td>0.70-1.80 ng/mL</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Cortisol AM (Oct 2022)</td><td colspan="3">16.4 ug/dL</td><td>6.7-22.6 ug/dL</td><td><span class="n">Normal — Adrenals OK</span></td></tr>
+</tbody></table></div><div class="section"><div class="section-title">Metabolic Panel (CMP/BMP) — Trend</div>
+<table class="lab-table"><thead><tr><th>Test</th><th>Mar 2026</th><th>Jun 2025</th><th>Oct 2022</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>Glucose</td><td>102</td><td>96</td><td>69</td><td>74-100 mg/dL</td><td><span class="h">Trending UP — A1C Recommended</span></td></tr>
+<tr><td>Sodium</td><td>138</td><td>138</td><td>139</td><td>136-144</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Potassium</td><td>3.9</td><td>4.1</td><td>4.0</td><td>3.5-5.0</td><td><span class="n">Normal (watch on Losartan)</span></td></tr>
+<tr><td>Creatinine</td><td>0.78</td><td>0.70</td><td>0.80</td><td>0.50-1.00</td><td><span class="n">Normal — Kidneys Good</span></td></tr>
+<tr><td>eGFR</td><td>&gt;60</td><td>&gt;60</td><td>&gt;60</td><td>&gt;=60</td><td><span class="n">Normal</span></td></tr>
+<tr><td>AST</td><td>23</td><td>N/A</td><td>37</td><td>10-45 U/L</td><td><span class="n">Normal — Liver OK</span></td></tr>
+<tr><td>ALT</td><td>26</td><td>N/A</td><td>47</td><td>14-54 U/L</td><td><span class="n">Normal — Liver OK</span></td></tr>
+<tr><td>Albumin</td><td>4.4</td><td>N/A</td><td>4.2</td><td>3.5-5.0</td><td><span class="n">Normal — Good Nutrition</span></td></tr>
+</tbody></table></div><div class="section"><div class="section-title">CBC (Blood Count) — Trend | Formal Diagnosis: Leukopenia</div>
+<table class="lab-table"><thead><tr><th>Test</th><th>Apr 2024</th><th>Reference</th><th>Status</th></tr></thead><tbody>
+<tr><td>WBC</td><td>3.6 K/uL</td><td>4.0-10.8 K/uL</td><td><span class="l">LOW — Formal Dx: Leukopenia (since Mar 2021)</span></td></tr>
+<tr><td>ANC (Abs Neutrophils)</td><td>1.7 K/uL</td><td>2.00-7.30 K/uL</td><td><span class="l">LOW — Mild Neutropenia</span></td></tr>
+<tr><td>Hemoglobin</td><td>14.4 g/dL</td><td>12.0-16.0 g/dL</td><td><span class="n">Normal</span></td></tr>
+<tr><td>Platelets</td><td>222 K/uL</td><td>150-400 K/uL</td><td><span class="n">Normal</span></td></tr>
+</tbody></table>
+<div class="ab-err" style="margin-top:12px"><strong>Leukopenia is a formal diagnosis (since 3/11/2021)</strong> — CBC Abnormal in 2018, 2019, 2021, 2022, 2024. Despite being officially diagnosed, cause may not have been fully investigated. Ask: "Has the cause of my leukopenia ever been determined? Should I see a hematologist?"</div></div><div class="section"><div class="section-title">Lipids, Vitamin D &amp; Autoimmune</div>
+<div class="grid-2">
+<div>
+<h3 style="color:#1e3a5f;margin-bottom:10px">Lipid Panel (Jun 2022 — Due for Recheck)</h3>
+<table class="lab-table"><thead><tr><th>Test</th><th>Value</th><th>Status</th></tr></thead><tbody>
+<tr><td>Total Cholesterol</td><td>214 mg/dL</td><td><span class="ab">Borderline High (&lt;200)</span></td></tr>
+<tr><td>HDL (Good)</td><td>87 mg/dL</td><td><span class="n">Excellent — Very Protective</span></td></tr>
+<tr><td>LDL (Bad)</td><td>112 mg/dL</td><td><span class="ab">Slightly High (&lt;100)</span></td></tr>
+<tr><td>Triglycerides</td><td>76 mg/dL</td><td><span class="n">Normal (&lt;150)</span></td></tr>
+<tr><td>Chol/HDL Ratio</td><td>2.5</td><td><span class="n">Low CV Risk (&lt;3.5)</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">Overall low cardiovascular risk due to exceptional HDL. Lipid panel last done Jun 2022 — 4 years overdue for recheck.</div>
+<h3 style="color:#1e3a5f;margin:16px 0 10px">Vitamin D (Formal Dx: Deficiency since Sep 2020)</h3>
+<table class="lab-table"><thead><tr><th>Date</th><th>Value</th><th>Status</th></tr></thead><tbody>
+<tr><td>Apr 2024</td><td>27 ng/mL</td><td><span class="l">LOW despite 5,000 IU/day</span></td></tr>
+<tr><td>Oct 2022</td><td>38 ng/mL</td><td><span class="n">Normal (30-119)</span></td></tr>
+</tbody></table>
+<div class="ab-warn" style="margin-top:8px;font-size:.85rem">Consider: increasing D3 dose, adding Vitamin K2 (MK-7), checking magnesium (needed for D3 activation), more sun exposure. Target: 40-60 ng/mL for postmenopausal women.</div>
+</div>
+<div>
+<h3 style="color:#1e3a5f;margin-bottom:10px">Autoimmune Panel (Jun 2025 — All Normal)</h3>
+<table class="lab-table"><thead><tr><th>Test</th><th>Result</th><th>Status</th></tr></thead><tbody>
+<tr><td>Rheumatoid Factor</td><td>&lt;10.0 IU/mL</td><td><span class="n">Normal (&lt;14)</span></td></tr>
+<tr><td>ESR (Sed Rate)</td><td>7 mm/hr</td><td><span class="n">Normal (0-10)</span></td></tr>
+<tr><td>ANA Qualitative</td><td>Negative</td><td><span class="n">Negative</span></td></tr>
+<tr><td>CCP Antibodies IgG/IgA</td><td>Negative</td><td><span class="n">Negative</span></td></tr>
+</tbody></table>
+<div class="ab-ok" style="margin-top:8px;font-size:.85rem">Autoimmune causes for knee pain ruled out (Jun 2025). RA and related conditions are unlikely.</div>
+<h3 style="color:#1e3a5f;margin:16px 0 10px">Cardiac Workup History (Sep 2022)</h3>
+<div class="ab-warn" style="font-size:.85rem"><strong>Sep 2022 Hospital/ER visit:</strong> Troponin I x2 normal, Chest X-ray, CBC (Abnormal), CMP (Glucose 69 Low). TSH 4.687 flagged HIGH. Formal diagnoses: Palpitations (taking medicine) and Chest Pain (resolved). Cardiac monitoring: ECG, 4-week Event Monitor, Stress Echo w/Contrast Nov 2022. Now on Losartan + Metoprolol (started Jan 2026).</div>
+</div></div></div><div class="section"><div class="section-title">Imaging &amp; Procedures Timeline</div>
+<div class="ab-err"><strong>PRIORITY: Oct 2025 Breast Biopsy</strong> — US-guided biopsy performed Oct 6, 2025. Pathology reviewed by Kristen Hardy PA-C and Tonya Holstein ARNP. Results are in external scan documents. Must discuss with Dr. Witham at next appointment (March 26, 2026).</div>
+<div class="tl" style="margin-top:16px">
+<div class="tli"><div class="d">Oct 6, 2025</div><div class="t">US Guided Breast Biopsy (Right) + Pathology Results x2</div><div class="dt">Dr. Rachael Witham, DO | Kristen J. Hardy, PA-C | Tonya M Holstein, ARNP</div></div>
+<div class="tli"><div class="d">Sep-Oct 2025</div><div class="t">Breast Imaging Workup (Right): MAM Digital Add Views, US Breast Limited, MAM Tomosyn Add Views, Imaging Report, Mammogram</div><div class="dt">Dr. Rachael Witham, DO | Joy Vaughan, PA-C — Recall/workup initiated from routine mammogram</div></div>
+<div class="tli"><div class="d">Aug 28, 2024</div><div class="t">MAM Tomosyn Screening Bilateral (Annual)</div><div class="dt">Dr. Rachael Witham, DO</div></div>
+<div class="tli"><div class="d">Mar 18, 2024</div><div class="t">PAP Liquid-Based + HPV High Risk — NORMAL</div><div class="dt">Kristen J. Hardy, PA-C — Normal PAP, HPV negative. Next due: 3/18/2029</div></div>
+<div class="tli"><div class="d">Mar 30, 2023</div><div class="t">Colonoscopy (External) — NORMAL</div><div class="dt">Dr. Rachael Witham, DO — Next due: 3/30/2033</div></div>
+<div class="tli"><div class="d">Nov 2, 2022</div><div class="t">Stress Echo w/Contrast + ECG Monitor</div><div class="dt">Nancy L. Vitello Mikiska, PA-C — Post-cardiac workup</div></div>
+<div class="tli"><div class="d">Oct-Nov 2022</div><div class="t">CV Event Monitor (4-Week) + Mobile Cardiac Telemetry + ECG 12-Lead</div><div class="dt">Nancy L. Vitello Mikiska, PA-C — Cardiac monitoring for palpitations</div></div>
+<div class="tli"><div class="d">Sep 19, 2022</div><div class="t">XR Shoulder Right (2+ views)</div><div class="dt">Kristen J. Hardy, PA-C — Right shoulder evaluation</div></div>
+<div class="tli"><div class="d">Sep 12, 2022</div><div class="t">XR Chest PA and Lateral (ER Visit)</div><div class="dt">Dr. Vanessa Branstetter, MD</div></div>
+<div class="tli"><div class="d">Nov 2017</div><div class="t">CT Abdomen &amp; Pelvis (WO IV Contrast)</div><div class="dt">Wendy K. Smith, ARNP — Historical</div></div>
+</div></div><div class="section"><div class="section-title">Key Provider Notes</div>
+<div class="grid-2">
+<div class="ab-ok"><strong>Dr. Witham, DO (Jun 2022):</strong> "Your labs look pretty good overall. Normal kidney and liver function, thyroid looks good, electrolytes are normal, cholesterol looks good."</div>
+<div class="ab-ok"><strong>Dr. Witham, DO (Apr 2024 — HRT):</strong> "Your hormone labs are looking good. You have been feeling well on your current doses. OK to continue with Koru pharmacy as planned."</div>
+<div class="ab-info"><strong>Joy Vaughan, PA-C (Jun 2025 — Pain):</strong> "ESR within normal range. Rheumatoid factor and ANA within normal limits. Autoimmune causes are far less likely. Continue with plan of care discussed in office."</div>
+<div class="ab-ok"><strong>Kristen Hardy, PA-C (Mar 2024 — PAP):</strong> "Your PAP screen is normal."</div>
+</div></div><div class="section"><div class="section-title">Priority Questions for Your Provider</div>
+<div class="grid-2">
+<div><h3 style="color:#dc2626;margin-bottom:10px">HIGH PRIORITY</h3>
+<ol style="padding-left:20px;line-height:2.2;font-size:.9rem">
+<li>What did my Oct 2025 breast biopsy show? What is the monitoring/treatment plan?</li>
+<li>My testosterone is 393 ng/dL (ref 4-50) — is my HRT compound dose correct?</li>
+<li>Leukopenia is a formal diagnosis since 2021, WBC low since 2018 — has the cause been determined? Should I see a hematologist?</li>
+<li>My glucose rose to 102 — can we do an A1C to screen for pre-diabetes?</li>
+<li>My Vitamin D dropped to 27 despite 5,000 IU daily — what should we change?</li>
+<li>I need Tdap, Shingles, Pneumococcal, and Flu vaccines — can we do these today?</li>
+</ol></div>
+<div><h3 style="color:#f59e0b;margin-bottom:10px">ALSO IMPORTANT</h3>
+<ol style="padding-left:20px;line-height:2.2;font-size:.9rem">
+<li>My TSH has been 4.2-4.7 for 4 years — can we test Free T4 and Free T3?</li>
+<li>My chronic knee pain diagnosis (Jun 2025) — has knee imaging been done? Should we get X-rays or an MRI?</li>
+<li>TMJ arthritis is on file since 2017 — is my knee pain possibly related to a systemic joint issue?</li>
+<li>When should I repeat my lipid panel (last done Jun 2022 — 4 years ago)?</li>
+<li>Why am I on Losartan + Metoprolol — is this for the hypertension diagnosis or the 2022 palpitations/chest pain?</li>
+</ol></div></div></div>
+</div>
+<script src="patient-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

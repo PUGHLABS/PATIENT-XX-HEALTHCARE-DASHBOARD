@@ -45,7 +45,7 @@ Benefits:
 - Fixes CORS permanently (works on `file://` too)
 - Proper production pattern
 
-Files needed: `server.js`, `.env` (gitignored), update fetch URL in `kirsten.html`
+Files needed: `server.js`, `.env` (gitignored), update fetch URL in `index.html`
 
 ---
 
