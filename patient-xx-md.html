@@ -88,7 +88,9 @@
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
 <input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" style="flex:1;min-width:200px;padding:12px 14px;border-radius:8px;border:2px solid #e2e8f0;font-size:.95rem;color:#1a202c;background:#f8fafc;font-family:monospace" aria-label="API Key">
 <button type="button" id="apiKeyToggle" style="padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.2);color:white;font-size:.85rem;cursor:pointer;white-space:nowrap">Show</button>
+<button type="button" id="apiKeyDelete" style="padding:10px 16px;border-radius:8px;border:1px solid #dc2626;background:#fee2e2;color:#dc2626;font-size:.85rem;cursor:pointer">Delete key</button>
 </div>
+<span id="apiKeyStatus" style="font-size:.8rem;color:#dc2626;margin-top:6px;display:block"></span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
 <button class="qbtn" onclick="sq('What do my most recent hormone levels mean for my HRT dosing?')">HRT Review</button>
@@ -407,6 +409,8 @@ window.addEventListener('DOMContentLoaded',function(){
     apiInput.type=apiInput.type==='password'?'text':'password';
     toggle.textContent=apiInput.type==='password'?'Show':'Hide';
   });
+  var deleteBtn=document.getElementById('apiKeyDelete');
+  if(deleteBtn&&apiInput){ deleteBtn.addEventListener('click',function(){ apiInput.value=''; apiInput.type='password'; if(toggle)toggle.textContent='Show'; var st=document.getElementById('apiKeyStatus'); if(st){ st.textContent='Key deleted.'; setTimeout(function(){ if(st)st.textContent=''; },2500); } }); }
 });
 
 var CTX=`You are a knowledgeable, warm, and empowering medical AI assistant helping Patient XX, a healthy and active ~60-year-old patient in rural Spokane, WA with limited access to specialty care. She uses Providence Health / MyChart. Your role is to help her understand her health data and prepare excellent questions for her healthcare providers. You are NOT providing diagnoses, but educational analysis.

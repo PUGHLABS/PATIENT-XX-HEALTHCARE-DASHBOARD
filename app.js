@@ -148,6 +148,8 @@ window.addEventListener('DOMContentLoaded',function(){
   }
   var saveBtn=document.getElementById('apiKeySave');
   if(saveBtn&&apiInput){ saveBtn.addEventListener('click',function(){ var v=apiInput.value.trim(); saveApiKey(v); var st=document.getElementById('apiKeyStatus'); if(st)st.textContent=v?'Key saved.':'Enter a key first.'; setTimeout(function(){ if(st)st.textContent=''; },2500); }); }
+  var deleteBtn=document.getElementById('apiKeyDelete');
+  if(deleteBtn&&apiInput){ deleteBtn.addEventListener('click',function(){ try{ localStorage.removeItem(API_KEY_STORAGE); sessionStorage.removeItem(API_KEY_STORAGE); }catch(e){} apiInput.value=''; apiInput.type='password'; if(toggle)toggle.textContent='Show'; var st=document.getElementById('apiKeyStatus'); if(st){ st.style.color='#dc2626'; st.textContent='Key deleted.'; setTimeout(function(){ if(st){ st.textContent=''; st.style.color='#059669'; } },2500); } }); }
   if(toggle&&apiInput)toggle.addEventListener('click',function(){
     apiInput.type=apiInput.type==='password'?'text':'password';
     toggle.textContent=apiInput.type==='password'?'Show':'Hide';
